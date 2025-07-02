@@ -3,10 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Moodle Support – Help and resources for your Moodle learning platform">
   <title>Moodle Support</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: #f4f4f4;
+    }
+    header {
+      background: #005792;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      background: #003f63;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .hero {
+      background: #e4eef5;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .hero h2 {
+      margin-bottom: 10px;
+    }
+    .section {
+      padding: 40px 20px;
+      background: white;
+      margin: 20px auto;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .feature {
+      flex: 1 1 30%;
+      background: #f9f9f9;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+    footer {
+      background: #003f63;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+      }
+      .feature {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to MoodleSupport.in</h1>
-  <p>This website will help you with Moodle guidance and documentation.</p>
+
+<header>
+  <h1>Moodle Support Portal</h1>
+  <p>Your one-stop help desk for Moodle-related guidance</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+  <h2>Welcome to MoodleSupport.in</h2>
+  <p>Helping teachers, students, and admins make the most of Moodle.</p>
+</section>
+
+<section class="section" id="about">
+  <h2>About This Site</h2>
+  <p>This site offers documentation, tutorials, and troubleshooting help for the Moodle Learning Management System (LMS). Whether you're a faculty member setting up your first course, or a student navigating the interface, we’ve got you covered.</p>
+</section>
+
+<section class="section" id="features">
+  <h2>Key Support Areas</h2>
+  <div class="features">
+    <div class="feature">
+      <h3>Login & Access</h3>
+      <p>Having trouble logging in? Learn how to access your Moodle portal securely.</p>
+    </div>
+    <div class="feature">
+      <h3>Course Management</h3>
+      <p>Step-by-step guides to creating, editing, and organizing courses.</p>
+    </div>
+    <div class="feature">
+      <h3>Assignments & Grades</h3>
+      <p>Help with uploading assignments, viewing grades, and using feedback tools.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact Us</h2>
+  <p>Have a question? Reach out to our support team at: <br><br>
+     📧 <strong>support@moodlesupport.in</strong><br>
+     📞 +91-XXXXXXXXXX</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 MoodleSupport.in | Built with ❤️ using GitHub Pages</p>
+</footer>
+
 </body>
 </html>
