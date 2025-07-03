@@ -44,7 +44,6 @@
 
     .hero h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
       background: linear-gradient(90deg, #ff4d4d, #ffb347);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -71,63 +70,72 @@
       background: #e53935;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
+    .counters {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      text-align: center;
+      padding: 40px 20px;
+      background: #151426;
+    }
+
+    .counter {
+      flex: 1 1 200px;
+    }
+
+    .counter h3 {
+      font-size: 2.5rem;
+      color: #ffb347;
+    }
+
+    .counter p {
+      margin-top: 10px;
+      color: var(--text-muted);
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
       padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      justify-content: center;
     }
 
-    .accordion {
-      background: #222;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      overflow: hidden;
+    .card {
+      background: #1c1b2f;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .accordion h3 {
-      background: linear-gradient(90deg, #ff4d4d, #ff9999);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      padding: 15px 20px;
-      margin: 0;
-      font-size: 1.2rem;
+      transition: transform 0.3s ease;
       cursor: pointer;
     }
 
-    .panel {
-      max-height: 0;
-      overflow: hidden;
-      background: #1b1b2b;
-      transition: max-height 0.4s ease;
-      padding: 0 20px;
+    .card:hover {
+      transform: scale(1.02);
     }
 
-    .panel ul {
-      margin: 15px 0;
-      padding-left: 20px;
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      background: linear-gradient(90deg, #ff4d4d, #ff9999);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .panel ul li {
-      margin-bottom: 10px;
+    .card .content {
+      display: none;
+      margin-top: 15px;
+      font-size: 0.95rem;
       color: #ccc;
     }
 
-    .accordion.active .panel {
-      max-height: 500px;
-      padding-bottom: 15px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .card.active .content {
+      display: block;
     }
 
     footer {
@@ -136,12 +144,13 @@
       background: #0c0b18;
       color: #777;
       font-size: 0.9rem;
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
       .hero h2 { font-size: 1.2rem; }
+      .counters { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -154,83 +163,102 @@
 <section class="hero">
   <h1>Welcome to MoodleSupport</h1>
   <h2>Your trusted source for Moodle help & tutorials</h2>
-  <a href="#content" class="cta">Start Exploring</a>
+  <a href="#cards" class="cta">Start Exploring</a>
 </section>
 
-<div class="container" id="content">
+<section class="counters">
+  <div class="counter">
+    <h3 id="count1">0</h3>
+    <p>Institutions Supported</p>
+  </div>
+  <div class="counter">
+    <h3 id="count2">0</h3>
+    <p>Teachers Helped</p>
+  </div>
+  <div class="counter">
+    <h3 id="count3">0</h3>
+    <p>Students Reached</p>
+  </div>
+</section>
 
-  <div class="accordion reveal">
+<section class="cards" id="cards">
+  <div class="card">
     <h3>🔐 Login & Access</h3>
-    <div class="panel">
+    <div class="content">
       <ul>
         <li>Step-by-step login guide for students and faculty</li>
-        <li>How to reset your password or recover your username</li>
-        <li>Tips for accessing Moodle on mobile devices</li>
+        <li>Password reset and access tips</li>
+        <li>Mobile-friendly access support</li>
       </ul>
     </div>
   </div>
 
-  <div class="accordion reveal">
+  <div class="card">
     <h3>📚 Teacher Support</h3>
-    <div class="panel">
+    <div class="content">
       <ul>
-        <li>Creating courses and organizing content</li>
-        <li>Uploading lectures, PDFs, assignments and quizzes</li>
-        <li>Tracking student submissions and giving feedback</li>
+        <li>Creating courses and uploading materials</li>
+        <li>Setting up quizzes and assignments</li>
+        <li>Grading and giving feedback</li>
       </ul>
     </div>
   </div>
 
-  <div class="accordion reveal">
-    <h3>🎓 Student Support</h3>
-    <div class="panel">
+  <div class="card">
+    <h3>🎓 Student Help</h3>
+    <div class="content">
       <ul>
-        <li>How to navigate your course dashboard</li>
-        <li>Submitting assignments and participating in forums</li>
-        <li>Viewing grades and tracking your progress</li>
+        <li>Navigating the dashboard</li>
+        <li>Submitting assignments and taking quizzes</li>
+        <li>Tracking grades and forum discussions</li>
       </ul>
     </div>
   </div>
 
-  <div class="accordion reveal">
-    <h3>🛠️ Admin Tips</h3>
-    <div class="panel">
+  <div class="card">
+    <h3>🛠️ Admin Zone</h3>
+    <div class="content">
       <ul>
-        <li>Managing users and assigning roles</li>
-        <li>Installing plugins and setting up backups</li>
-        <li>Performance monitoring and server configuration</li>
+        <li>Managing users and roles</li>
+        <li>Installing plugins and automation</li>
+        <li>Backups and performance tuning</li>
       </ul>
     </div>
   </div>
-
-</div>
+</section>
 
 <footer>
   &copy; 2025 MoodleSupport.in – Created with ❤️ using GitHub Pages
 </footer>
 
 <script>
-  // Accordion toggle
-  document.querySelectorAll('.accordion h3').forEach(header => {
-    header.addEventListener('click', () => {
-      const parent = header.parentElement;
-      parent.classList.toggle('active');
-    });
+  // Animated counters
+  function animateCounter(id, end, duration) {
+    let el = document.getElementById(id);
+    let start = 0;
+    let step = Math.ceil(end / (duration / 30));
+    let interval = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        el.innerText = end + '+';
+        clearInterval(interval);
+      } else {
+        el.innerText = start;
+      }
+    }, 30);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    animateCounter('count1', 10, 1000);
+    animateCounter('count2', 200, 1200);
+    animateCounter('count3', 5000, 1500);
   });
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  // Toggle card expansion
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('active');
     });
-  }, { threshold: 0.1 });
-
-  reveals.forEach(reveal => {
-    observer.observe(reveal);
   });
 </script>
 
