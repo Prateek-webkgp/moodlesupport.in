@@ -2,64 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoodleSupport.in – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodleSupport.in – Moodle Help Desk</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --primary: #ff4d4d;
+      --dark: #0d0c1d;
+      --mid: #1e1b2e;
+      --text-light: #eeeeee;
+      --text-muted: #aaaaaa;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #0d0c1d, #1f1c2c);
-      color: #fff;
+      background: linear-gradient(180deg, var(--dark), var(--mid));
+      color: var(--text-light);
     }
 
     nav {
-      background: #d32f2f;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 18px;
+      background: var(--primary);
+      padding: 15px 20px;
+      text-align: center;
     }
 
-    nav a {
+    nav span {
+      font-size: 1.4rem;
+      font-weight: bold;
       color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #ffd6d6;
     }
 
     .hero {
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 80px 20px 60px;
     }
 
     .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff4d4d, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero h2 {
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: #ff4d4d;
+      font-size: 1.5rem;
+      color: var(--text-muted);
       margin-bottom: 30px;
     }
 
     .hero .cta {
-      display: inline-block;
       background: #ff4d4d;
       color: white;
       padding: 15px 30px;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 1.1rem;
       text-decoration: none;
-      margin-top: 10px;
+      display: inline-block;
       transition: background 0.3s ease;
     }
 
@@ -67,53 +67,88 @@
       background: #e53935;
     }
 
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-top: 30px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      line-height: 1.8;
+    }
+
+    .content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff4d4d, #ffa3a3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content ul {
+      padding-left: 20px;
+      margin-bottom: 40px;
+    }
+
+    .content ul li {
+      margin-bottom: 10px;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: #0f0f1f;
-      color: #aaa;
+      padding: 30px 20px;
+      background: #0c0b18;
+      color: #777;
       font-size: 0.9rem;
-      margin-top: 60px;
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero h2 {
-        font-size: 1.4rem;
-      }
+      .hero h1 { font-size: 2.2rem; }
+      .hero h2 { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="teacher.html">Teacher</a>
-  <a href="student.html">Student</a>
-  <a href="admin.html">Admin</a>
-  <a href="contact.html">Contact</a>
+  <span>MoodleSupport.in</span>
 </nav>
 
 <section class="hero">
-  <h1>Welcome to MoodleSupport.in</h1>
-  <h2>Your Free Guide to Teaching & Learning with Moodle</h2>
-  <a href="teacher.html" class="cta">Explore Now</a>
+  <h1>Welcome to MoodleSupport</h1>
+  <h2>Your trusted source for Moodle help & tutorials</h2>
+  <a href="#content" class="cta">Start Exploring</a>
+</section>
 
-  <img src="assets/images/banner.jpg" alt="Hero Banner" />
+<section class="content" id="content">
+  <h3>🔐 Login & Access</h3>
+  <ul>
+    <li>Step-by-step login guide for students and faculty</li>
+    <li>Password reset tips and browser issues</li>
+    <li>Accessing Moodle from mobile devices</li>
+  </ul>
+
+  <h3>📚 Teacher Support</h3>
+  <ul>
+    <li>How to create and manage courses</li>
+    <li>Upload videos, assignments, and files</li>
+    <li>Set up quizzes, forums, and feedback tools</li>
+  </ul>
+
+  <h3>🎓 Student Support</h3>
+  <ul>
+    <li>Submitting assignments and taking quizzes</li>
+    <li>Using discussion forums effectively</li>
+    <li>Tracking grades and progress</li>
+  </ul>
+
+  <h3>🛠️ Admin Tips</h3>
+  <ul>
+    <li>Installing and updating Moodle plugins</li>
+    <li>User role management and course permissions</li>
+    <li>Performance, backups, and scheduled tasks</li>
+  </ul>
 </section>
 
 <footer>
-  &copy; 2025 MoodleSupport.in – Built with ❤️ using GitHub Pages
+  &copy; 2025 MoodleSupport.in – Created with ❤️ using GitHub Pages
 </footer>
 
 </body>
