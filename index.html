@@ -14,6 +14,10 @@
       --text-muted: #aaaaaa;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -67,28 +71,63 @@
       background: #e53935;
     }
 
-    .content {
+    .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 60px 20px;
-      line-height: 1.8;
     }
 
-    .content h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #ff4d4d, #ffa3a3);
+    .accordion {
+      background: #222;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .accordion h3 {
+      background: linear-gradient(90deg, #ff4d4d, #ff9999);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      padding: 15px 20px;
+      margin: 0;
+      font-size: 1.2rem;
+      cursor: pointer;
     }
 
-    .content ul {
+    .panel {
+      max-height: 0;
+      overflow: hidden;
+      background: #1b1b2b;
+      transition: max-height 0.4s ease;
+      padding: 0 20px;
+    }
+
+    .panel ul {
+      margin: 15px 0;
       padding-left: 20px;
-      margin-bottom: 40px;
     }
 
-    .content ul li {
+    .panel ul li {
       margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .accordion.active .panel {
+      max-height: 500px;
+      padding-bottom: 15px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     footer {
@@ -97,6 +136,7 @@
       background: #0c0b18;
       color: #777;
       font-size: 0.9rem;
+      margin-top: 60px;
     }
 
     @media (max-width: 768px) {
@@ -117,39 +157,82 @@
   <a href="#content" class="cta">Start Exploring</a>
 </section>
 
-<section class="content" id="content">
-  <h3>🔐 Login & Access</h3>
-  <ul>
-    <li>Step-by-step login guide for students and faculty</li>
-    <li>Password reset tips and browser issues</li>
-    <li>Accessing Moodle from mobile devices</li>
-  </ul>
+<div class="container" id="content">
 
-  <h3>📚 Teacher Support</h3>
-  <ul>
-    <li>How to create and manage courses</li>
-    <li>Upload videos, assignments, and files</li>
-    <li>Set up quizzes, forums, and feedback tools</li>
-  </ul>
+  <div class="accordion reveal">
+    <h3>🔐 Login & Access</h3>
+    <div class="panel">
+      <ul>
+        <li>Step-by-step login guide for students and faculty</li>
+        <li>How to reset your password or recover your username</li>
+        <li>Tips for accessing Moodle on mobile devices</li>
+      </ul>
+    </div>
+  </div>
 
-  <h3>🎓 Student Support</h3>
-  <ul>
-    <li>Submitting assignments and taking quizzes</li>
-    <li>Using discussion forums effectively</li>
-    <li>Tracking grades and progress</li>
-  </ul>
+  <div class="accordion reveal">
+    <h3>📚 Teacher Support</h3>
+    <div class="panel">
+      <ul>
+        <li>Creating courses and organizing content</li>
+        <li>Uploading lectures, PDFs, assignments and quizzes</li>
+        <li>Tracking student submissions and giving feedback</li>
+      </ul>
+    </div>
+  </div>
 
-  <h3>🛠️ Admin Tips</h3>
-  <ul>
-    <li>Installing and updating Moodle plugins</li>
-    <li>User role management and course permissions</li>
-    <li>Performance, backups, and scheduled tasks</li>
-  </ul>
-</section>
+  <div class="accordion reveal">
+    <h3>🎓 Student Support</h3>
+    <div class="panel">
+      <ul>
+        <li>How to navigate your course dashboard</li>
+        <li>Submitting assignments and participating in forums</li>
+        <li>Viewing grades and tracking your progress</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion reveal">
+    <h3>🛠️ Admin Tips</h3>
+    <div class="panel">
+      <ul>
+        <li>Managing users and assigning roles</li>
+        <li>Installing plugins and setting up backups</li>
+        <li>Performance monitoring and server configuration</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
 
 <footer>
   &copy; 2025 MoodleSupport.in – Created with ❤️ using GitHub Pages
 </footer>
+
+<script>
+  // Accordion toggle
+  document.querySelectorAll('.accordion h3').forEach(header => {
+    header.addEventListener('click', () => {
+      const parent = header.parentElement;
+      parent.classList.toggle('active');
+    });
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(reveal => {
+    observer.observe(reveal);
+  });
+</script>
 
 </body>
 </html>
