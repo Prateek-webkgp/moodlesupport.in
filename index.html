@@ -3,198 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Moodle Support – Help and resources for your Moodle learning platform">
-  <title>Moodle Support</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>MoodleSupport.in – Home</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(120deg, #005792, #0079a4);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    nav {
-      background: #003f63;
-      padding: 12px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 18px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffd369;
-    }
-
-    .hero {
-      background: #eaf4fb;
-      padding: 60px 20px;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    .hero h2 {
-      margin-bottom: 12px;
-      font-size: 2rem;
-      color: #005792;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 50px 20px;
-      background: white;
-      margin: 30px auto;
-      max-width: 1000px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    }
-
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #003f63;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-around;
-    }
-
-    .feature {
-      flex: 1 1 28%;
-      background: #f3f9fc;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-    }
-
-    .feature:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature h3 {
-      margin-top: 10px;
-      color: #005792;
-    }
-
-    .feature p {
-      font-size: 0.95rem;
-    }
-
-    .icon {
-      font-size: 2rem;
-    }
-
-    footer {
-      background: #003f63;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .features {
-        flex-direction: column;
-        align-items: center;
-      }
-      .feature {
-        width: 90%;
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background: #121212; color: #fff; }
+    nav { background: #d32f2f; padding: 15px; text-align: center; }
+    nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    header { text-align: center; padding: 60px 20px; }
+    h1 { font-size: 3rem; margin: 0; color: #ff5252; }
+    p { max-width: 700px; margin: 20px auto; line-height: 1.6; font-size: 1.1rem; }
+    footer { text-align: center; padding: 20px; background: #1a1a1a; margin-top: 60px; color: #999; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Moodle Support Portal</h1>
-  <p>Your one-stop hub for Moodle help & guidance</p>
-</header>
-
 <nav>
-  <a href="#about">About</a>
-  <a href="#features">Features</a>
-  <a href="#contact">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="teacher.html">Teacher</a>
+  <a href="student.html">Student</a>
+  <a href="admin.html">Admin</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
-<section class="hero">
-  <h2>Welcome to MoodleSupport.in 👋</h2>
-  <p>Empowering educators, students, and administrators to get the best out of Moodle. Explore our curated help guides, tips, and tools.</p>
-</section>
+<header>
+  <h1>Welcome to MoodleSupport.in</h1>
+  <p>Your guide to mastering Moodle – designed for teachers, students, and LMS administrators.</p>
+</header>
 
-<section class="section" id="about">
-  <h2>About This Site</h2>
-  <p style="max-width: 800px; margin: 0 auto; text-align: center;">
-    MoodleSupport.in is an open knowledge base dedicated to making Moodle easy to use for everyone. Whether you're a teacher setting up quizzes or a student submitting assignments, our guides are built to help you succeed.
-  </p>
-</section>
-
-<section class="section" id="features">
-  <h2>Key Support Areas</h2>
-  <div class="features">
-    <div class="feature">
-      <div class="icon">🔐</div>
-      <h3>Login & Access</h3>
-      <p>Step-by-step help for accessing your Moodle portal securely and solving common login issues.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">📚</div>
-      <h3>Course Management</h3>
-      <p>Learn how to create, manage, and structure courses using best practices in Moodle.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">📝</div>
-      <h3>Assignments & Grades</h3>
-      <p>Help with submitting assignments, tracking progress, and understanding grading tools.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <h2>Contact Us</h2>
-  <p style="text-align: center;">
-    Have a question or suggestion? Reach out to us:<br><br>
-    📧 <strong>support@moodlesupport.in</strong><br>
-    📞 +91-9876543210
-  </p>
+<section style="text-align: center;">
+  <p>Browse our help guides, tips, and tutorials across all user types. Whether you're creating a course or submitting your first assignment, we’re here to help.</p>
 </section>
 
 <footer>
-  <p>&copy; 2025 MoodleSupport.in | Crafted with ❤️ using GitHub Pages | All rights reserved</p>
+  &copy; 2025 MoodleSupport.in – Built with ❤️ using GitHub Pages
 </footer>
 
 </body>
 </html>
-
