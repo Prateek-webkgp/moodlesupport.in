@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Help – MoodleSupport.in</title>
+  <style>
+    body { background: #121212; color: #fff; font-family: Arial, sans-serif; margin: 0; }
+    nav { background: #d32f2f; padding: 15px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { max-width: 800px; margin: auto; padding: 40px 20px; }
+    h1 { color: #ff5252; }
+    ul { line-height: 1.8; }
+    footer { text-align: center; padding: 20px; background: #1a1a1a; margin-top: 60px; color: #999; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="teacher.html">Teacher</a>
+  <a href="student.html">Student</a>
+  <a href="admin.html">Admin</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section>
+  <h1>Teacher Support</h1>
+  <ul>
+    <li>✅ How to create a new course</li>
+    <li>✅ Uploading materials (PDF, PPT, videos)</li>
+    <li>✅ Creating quizzes, assignments, and forums</li>
+    <li>✅ Managing grades and feedback</li>
+    <li>✅ Course completion tracking</li>
+  </ul>
+</section>
+
+<footer>
+  &copy; 2025 MoodleSupport.in
+</footer>
+
+</body>
+</html>
