@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoodleSupport.in – Learn & Teach Better</title>
+  <title>MoodleSupport.in – Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -12,50 +12,42 @@
       background: linear-gradient(180deg, #0d0c1d, #1f1c2c);
       color: #fff;
     }
+
     nav {
+      background: #d32f2f;
       display: flex;
       justify-content: center;
       gap: 30px;
-      padding: 20px;
-      background: #d32f2f;
+      padding: 18px;
     }
+
     nav a {
       color: white;
-      font-weight: bold;
       text-decoration: none;
+      font-weight: 600;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
-      color: #ffb3b3;
+      color: #ffd6d6;
     }
 
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 20px;
       text-align: center;
+      padding: 60px 20px 30px;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
-      color: white;
+      color: #ffffff;
     }
 
     .hero h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 400;
       color: #ff4d4d;
-      margin-bottom: 20px;
-    }
-
-    .hero img {
-      max-width: 90%;
-      max-height: 400px;
-      border-radius: 10px;
-      margin-top: 30px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      margin-bottom: 30px;
     }
 
     .hero .cta {
@@ -66,8 +58,8 @@
       border-radius: 5px;
       font-weight: bold;
       font-size: 1.1rem;
-      margin-top: 30px;
       text-decoration: none;
+      margin-top: 10px;
       transition: background 0.3s ease;
     }
 
@@ -75,12 +67,20 @@
       background: #e53935;
     }
 
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       background: #0f0f1f;
-      font-size: 0.9rem;
       color: #aaa;
+      font-size: 0.9rem;
       margin-top: 60px;
     }
 
@@ -89,7 +89,7 @@
         font-size: 2.2rem;
       }
       .hero h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -106,9 +106,10 @@
 
 <section class="hero">
   <h1>Welcome to MoodleSupport.in</h1>
-  <h2>Online Learning Made Easy</h2>
-  <a class="cta" href="teacher.html">Explore Now</a>
-  <img src="assets/images/banner.jpg" alt="Education Banner" style="width:100%; max-height:400px; object-fit:cover; display:block; margin-top:30px; border-radius:10px;">
+  <h2>Your Free Guide to Teaching & Learning with Moodle</h2>
+  <a href="teacher.html" class="cta">Explore Now</a>
+
+  <img src="assets/images/banner.jpg" alt="Hero Banner" />
 </section>
 
 <footer>
