@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enable Google & Microsoft Login in Moodle – moodlesupport.in Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0d0c1d;
+      color: #eeeeee;
+      font-family: 'Poppins', sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 30px 20px;
+      line-height: 1.7;
+    }
+    h1, h2 {
+      background: linear-gradient(90deg, #ff4d4d, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    a { color: #ffb347; text-decoration: none; }
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #ff4d4d88, transparent);
+      margin: 40px 0;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #ffb347;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🔐 How I Enabled Google & Microsoft OAuth2 Login in Moodle (Step-by-Step Guide)</h1>
+<p style="color:#aaa;">Posted by <strong>Prateek Sharma</strong> – July 2025</p>
+
+<hr>
+
+<p>
+Many institutions want secure, single-click login for their Moodle platform using Google or Microsoft accounts. In this guide, I’ll share how I configured OAuth2 login (SSO) for both Google and Microsoft — tested on Moodle 4.x running on Linux.
+</p>
+
+<h2>Step 1: Enable OAuth2 Service in Moodle</h2>
+<ol>
+  <li>Login as Admin → <strong>Site Administration</strong></li>
+  <li>Go to <code>Server → OAuth 2 Services</code></li>
+  <li>Click <strong>Google</strong> or <strong>Microsoft</strong> to configure</li>
+</ol>
+
+<h2>Step 2: Create Credentials (Google Console or Azure)</h2>
+<p><strong>For Google:</strong></p>
+<ul>
+  <li>Go to <a href="https://console.cloud.google.com/apis/credentials" target="_blank">Google API Console</a></li>
+  <li>Create a new <strong>OAuth 2.0 Client ID</strong></li>
+  <li>Authorized Redirect URI:
+    <code>https://yourmoodlesite.com/admin/oauth2callback.php</code></li>
+</ul>
+
+<p><strong>For Microsoft:</strong></p>
+<ul>
+  <li>Visit <a href="https://portal.azure.com" target="_blank">Azure Portal</a></li>
+  <li>Register a new App in <strong>Azure Active Directory</strong></li>
+  <li>Redirect URI: same as above</li>
+</ul>
+
+<h2>Step 3: Add Client ID and Secret in Moodle</h2>
+<p>
+Once credentials are ready:
+</p>
+<ol>
+  <li>Go back to Moodle → OAuth2 Services</li>
+  <li>Edit the provider → Paste <strong>Client ID</strong> and <strong>Client Secret</strong></li>
+  <li>Save and verify connection (token should be valid)</li>
+</ol>
+
+<h2>Step 4: Enable as Login Option</h2>
+<p>Go to:</p>
+<ul>
+  <li><code>Site admin → Plugins → Authentication → Manage authentication</code></li>
+  <li>Enable <strong>OAuth2</strong> and set as visible</li>
+</ul>
+
+<h2>Step 5: Test It</h2>
+<p>
+Visit your login page. You should now see buttons for:
+</p>
+<ul>
+  <li>Login with Google</li>
+  <li>Login with Microsoft</li>
+</ul>
+
+<h2>Optional Tips</h2>
+<ul>
+  <li>Use a custom logo/icon for Google & Microsoft buttons</li>
+  <li>Works even for Moodle on <strong>localhost or internal IP</strong> (if you add public domain + SSL)</li>
+  <li>You can restrict login to specific domains (e.g., @iitp.ac.in)</li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>
+OAuth2 login improves user experience and reduces forgotten password issues. I’ve used it successfully on both Oracle Cloud and in-house Linux servers for IIT-based Moodle platforms.
+</p>
+
+<p>
+Need help setting this up? <a href="mailto:ch1106851030@gmail.com">Contact me here</a> or <a href="https://moodlesupport.in">visit MoodleSupport.in</a> for full deployment services.
+</p>
+
+</body>
+</html>
