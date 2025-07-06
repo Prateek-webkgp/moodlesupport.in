@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deploy Moodle on Linux In-House Server – moodlesupport.in</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0c1d;
+      color: #eee;
+      padding: 0 20px;
+    }
+    header {
+      text-align: center;
+      padding: 50px 0 20px;
+    }
+    header h1 {
+      font-size: 2rem;
+      background: linear-gradient(90deg, #ff4d4d, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    article {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+      color: #ccc;
+    }
+    h2 {
+      color: #ffb347;
+      margin-top: 30px;
+    }
+    code {
+      background: #1e1b2e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #ffb347;
+    }
+    pre {
+      background: #1e1b2e;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      color: #eee;
+    }
+    a {
+      color: #ffb347;
+    }
+    footer {
+      text-align: center;
+      margin: 60px 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How I Deployed Moodle 4.5 on an In-House Linux Server</h1>
+  </header>
+
+  <article>
+    <p><strong>Date:</strong> July 2025</p>
+
+    <p>If you're setting up a Moodle LMS server in your own infrastructure (lab, college, office), this guide walks you through deploying Moodle 4.5 on a bare-metal or virtual machine running Ubuntu Linux. No cloud needed — everything runs on your local or institutional server.</p>
+
+    <h2>Step 1: Prepare Your Server</h2>
+    <ul>
+      <li>Use Ubuntu Server 22.04 LTS (recommended)</li>
+      <li>Ensure at least 4 GB RAM and 50+ GB disk space</li>
+      <li>Assign a static local IP (e.g. 192.168.1.10)</li>
+      <li>Make sure ports 80 (HTTP) and 443 (HTTPS) are open internally</li>
+    </ul>
+
+    <h2>Step 2: Install LAMP Stack</h2>
+    <pre>
+sudo apt update && sudo apt upgrade -y
+sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql php-xml php-curl php-zip php-soap php-intl php-mbstring php-bcmath php-gd php-cli unzip git -y
+    </pre>
+
+    <h2>Step 3: Create Moodle Database</h2>
+    <pre>
+sudo mysql -u root
+CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'StrongPassword';
+GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+    </pre>
+
+    <h2>Step 4: Download and Configure Moodle</h2>
+    <pre>
+cd /var/www/html
+sudo git clone -b MOODLE_400_STABLE git://git.moodle.org/moodle.git moodle
+sudo mkdir /var/www/moodledata
+sudo chown -R www-data:www-data /var/www/moodledata /var/www/html/moodle
+sudo chmod -R 755 /var/www/
+    </pre>
+
+    <h2>Step 5: Access the Web Installer</h2>
+    <p>From any machine on the network, open <code>http://192.168.1.10/moodle</code> (replace with your server's IP).</p>
+
+    <h2>Step 6: (Optional) Enable HTTPS with Local SSL</h2>
+    <p>If your server has a domain or you're using it externally, you can use Let's Encrypt. Otherwise, consider using a self-signed certificate.</p>
+
+    <h2>Step 7: Set up Cron Job</h2>
+    <pre>
+crontab -e
+*/1 * * * * /usr/bin/php /var/www/html/moodle/admin/cli/cron.php > /dev/null
+    </pre>
+
+    <h2>Done!</h2>
+    <p>Your in-house Moodle LMS server is now fully set up and ready for users on your network.</p>
+    <p>Need help setting this up at your institution? <a href="mailto:ch1106851030@gmail.com">Email me</a> or visit <a href="https://moodlesupport.in">moodlesupport.in</a>.</p>
+  </article>
+
+  <footer>
+    &copy; 2025 MoodleSupport.in – Blog Post by Prateek Sharma
+  </footer>
+</body>
+</html>
