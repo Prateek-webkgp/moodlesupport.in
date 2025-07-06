@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing – MoodleSupport.in</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0c1d;
+      color: #eeeeee;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      background: linear-gradient(90deg, #ff4d4d, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .plan {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
+    }
+
+    .plan h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff4d4d, #ff9999);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .plan p.price {
+      font-size: 2rem;
+      color: #ffb347;
+      margin-bottom: 20px;
+    }
+
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      text-align: left;
+    }
+
+    .plan ul li {
+      margin: 10px 0;
+      color: #ccc;
+    }
+
+    .cta {
+      background: #ff4d4d;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0 15px #ff4d4d88;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background: #e53935;
+      box-shadow: 0 0 25px #ff4d4daa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #0c0b18;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .plans {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>💼 Moodle Services Pricing</h1>
+  <p style="text-align:center; color:#aaa; font-size:1.1rem;">
+    Choose a plan that fits your institution’s needs
+  </p>
+
+  <div class="plans">
+    <div class="plan">
+      <h3>Starter</h3>
+      <p class="price">₹49999</p>
+      <ul>
+        <li>✅ Moodle setup on Linux server</li>
+        <li>✅ Theme configuration</li>
+        <li>✅ Basic plugin installation</li>
+        <li>✅ Google login setup</li>
+        <li>✅ 3 days email support</li>
+      </ul>
+      <a href="mailto:ch1106851030@gmail.com" class="cta">Get Started</a>
+    </div>
+
+    <div class="plan">
+      <h3>Pro</h3>
+      <p class="price">₹99999</p>
+      <ul>
+        <li>✅ All Starter features</li>
+        <li>✅ Microsoft login setup</li>
+        <li>✅ Custom plugin support</li>
+        <li>✅ Faculty training session</li>
+        <li>✅ 7 days email + chat support</li>
+      </ul>
+      <a href="mailto:ch1106851030@gmail.com" class="cta">Book Now</a>
+    </div>
+
+    <div class="plan">
+      <h3>Custom</h3>
+      <p class="price">Contact</p>
+      <ul>
+        <li>✅ End-to-end Moodle deployment</li>
+        <li>✅ Transcript viewer / grade tool</li>
+        <li>✅ Internal or cloud-based setup</li>
+        <li>✅ Role-based access + backup jobs</li>
+        <li>✅ Long-term support</li>
+      </ul>
+      <a href="mailto:ch1106851030@gmail.com" class="cta">Request Quote</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 MoodleSupport.in – All rights reserved
+</footer>
+
+</body>
+</html>
