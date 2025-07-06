@@ -89,11 +89,69 @@
       display: inline-block;
       box-shadow: 0 0 15px #ff4d4d88;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .cta:hover {
       background: #e53935;
       box-shadow: 0 0 25px #ff4d4daa;
+    }
+    /* Modal Form */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #1e1b2e;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 450px;
+      width: 90%;
+      color: #eee;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      background: linear-gradient(90deg, #ff4d4d, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: rgba(255,255,255,0.05);
+      color: #eee;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+    }
+
+    .modal-content input:focus,
+    .modal-content textarea:focus {
+      outline: none;
+      border-color: #ff4d4d;
+      box-shadow: 0 0 5px #ff4d4d;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      color: #aaa;
+      cursor: pointer;
     }
 
     footer {
@@ -124,7 +182,7 @@
   <div class="plans">
     <div class="plan">
       <h3>Starter</h3>
-      <p class="price">₹49999</p>
+      <p class="price">₹4999</p>
       <ul>
         <li>✅ Moodle setup on Linux server</li>
         <li>✅ Theme configuration</li>
@@ -132,12 +190,12 @@
         <li>✅ Google login setup</li>
         <li>✅ 3 days email support</li>
       </ul>
-      <a href="mailto:ch1106851030@gmail.com" class="cta">Get Started</a>
+      <button class="cta" onclick="openForm('Starter')">Get Started</button>
     </div>
 
     <div class="plan">
       <h3>Pro</h3>
-      <p class="price">₹99999</p>
+      <p class="price">₹9999</p>
       <ul>
         <li>✅ All Starter features</li>
         <li>✅ Microsoft login setup</li>
@@ -145,7 +203,7 @@
         <li>✅ Faculty training session</li>
         <li>✅ 7 days email + chat support</li>
       </ul>
-      <a href="mailto:ch1106851030@gmail.com" class="cta">Book Now</a>
+      <button class="cta" onclick="openForm('Pro')">Get Started</button>
     </div>
 
     <div class="plan">
@@ -158,14 +216,49 @@
         <li>✅ Role-based access + backup jobs</li>
         <li>✅ Long-term support</li>
       </ul>
-      <a href="mailto:ch1106851030@gmail.com" class="cta">Request Quote</a>
+      <button class="cta" onclick="openForm('Custom')">Get Started</button>
     </div>
   </div>
 </div>
 
+<!-- 🌟 Popup Form -->
+<div class="modal" id="popupForm">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <h2>Request This Plan</h2>
+    <form action="https://formspree.io/f/mgvyblob" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="plan" id="selectedPlan" readonly>
+      <textarea name="message" rows="4" placeholder="Any specific requirements?"></textarea>
+      <button type="submit" class="cta" style="width: 100%; margin-top: 10px;">Send Request</button>
+    </form>
+  </div>
+</div>
 <footer>
   &copy; 2025 MoodleSupport.in – All rights reserved
 </footer>
+
+<script>
+  function openForm(planName) {
+    document.getElementById('selectedPlan').value = planName;
+    document.getElementById('popupForm').style.display = 'flex';
+  }
+
+  function closeForm() {
+    document.getElementById('popupForm').style.display = 'none';
+  }
+
+  // Optional: Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") closeForm();
+  });
+
+  // Optional: Close modal if clicked outside form
+  window.addEventListener('click', function(e) {
+    if (e.target.id === 'popupForm') closeForm();
+  });
+</script>
 
 </body>
 </html>
