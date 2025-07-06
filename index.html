@@ -188,6 +188,44 @@
     .scroll-top:hover {
       background: #e53935;
     }
+form input,
+form textarea {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--primary);
+  border-color: var(--primary);
+}
+
+form button.cta {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff4d4d88;
+  transition: all 0.3s ease;
+}
+
+form button.cta:hover {
+  background: #e53935;
+  box-shadow: 0 0 25px #ff4d4daa;
+}
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
