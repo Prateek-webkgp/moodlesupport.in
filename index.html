@@ -160,58 +160,6 @@
     .card.active .content {
       display: block;
     }
-<div class="divider"></div>
-
-<section class="cards" id="portfolio">
-  <div class="card">
-    <h3>🌐 Moodle on Oracle Cloud</h3>
-    <div class="content">
-      <ul>
-        <li>Deployed Moodle 4.x on free-tier Ubuntu server</li>
-        <li>Configured Apache, MySQL, PHP, and cron jobs</li>
-        <li>Enabled SSL, domain mapping, and email setup</li>
-        <li>Optimized performance and uptime with shell scripts</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>📊 Grade Lookup Tool</h3>
-    <div class="content">
-      <ul>
-        <li>Built a site-wide grade lookup utility using PHP</li>
-        <li>Role-based access for faculty and students</li>
-        <li>Supports multi-course grade aggregation</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>📄 Transcript Viewer Block</h3>
-    <div class="content">
-      <ul>
-        <li>Custom Moodle block for quick transcript views</li>
-        <li>Filters by email, cohort, or batch</li>
-        <li>Export-ready layout for offline storage</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>🧩 Plugin Integration & Tuning</h3>
-    <div class="content">
-      <ul>
-        <li>Integrated plugins like BigBlueButton, Attendance, and Custom Certificates</li>
-        <li>Tuned server settings for real-time sessions</li>
-        <li>Resolved plugin conflicts and updated DB schemas</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="cta" style="text-align:center; margin-top:40px;">
-  <a href="mailto:ch1106851030@gmail.com" class="cta">Hire Me for Moodle Projects</a>
-</div>
 
     footer {
       text-align: center;
@@ -257,7 +205,7 @@
 <section class="hero">
   <h1>Welcome to MoodleSupport</h1>
   <h2>Your trusted source for Moodle help & tutorials</h2>
-  <a href="#cards" class="cta">Start Exploring</a>
+  <a href="#portfolio" class="cta">View My Work</a>
 </section>
 
 <div class="divider"></div>
@@ -325,6 +273,59 @@
   </div>
 </section>
 
+<div class="divider"></div>
+
+<section class="cards" id="portfolio">
+  <div class="card">
+    <h3>🌐 Moodle on Oracle Cloud</h3>
+    <div class="content">
+      <ul>
+        <li>Deployed Moodle 4.x on free-tier Ubuntu server</li>
+        <li>Configured Apache, MySQL, PHP, and cron jobs</li>
+        <li>Enabled SSL, domain mapping, and email setup</li>
+        <li>Optimized performance and uptime with shell scripts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Grade Lookup Tool</h3>
+    <div class="content">
+      <ul>
+        <li>Built a site-wide grade lookup utility using PHP</li>
+        <li>Role-based access for faculty and students</li>
+        <li>Supports multi-course grade aggregation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📄 Transcript Viewer Block</h3>
+    <div class="content">
+      <ul>
+        <li>Custom Moodle block for quick transcript views</li>
+        <li>Filters by email, cohort, or batch</li>
+        <li>Export-ready layout for offline storage</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🧩 Plugin Integration & Tuning</h3>
+    <div class="content">
+      <ul>
+        <li>Integrated plugins like BigBlueButton, Attendance, and Custom Certificates</li>
+        <li>Tuned server settings for real-time sessions</li>
+        <li>Resolved plugin conflicts and updated DB schemas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta" style="text-align:center; margin-top:40px;">
+  <a href="mailto:ch1106851030@gmail.com" class="cta">Hire Me for Moodle Projects</a>
+</div>
+
 <footer>
   &copy; 2025 MoodleSupport.in – Created with ❤️ using GitHub Pages
 </footer>
@@ -332,7 +333,6 @@
 <div class="scroll-top" id="scrollTopBtn">↑</div>
 
 <script>
-  // Animated counters
   function animateCounter(id, end, duration) {
     let el = document.getElementById(id);
     let start = 0;
@@ -354,14 +354,12 @@
     animateCounter('count3', 7000, 1500);
   });
 
-  // Toggle card expansion
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('active');
     });
   });
 
-  // Scroll to top button
   const scrollBtn = document.getElementById("scrollTopBtn");
   window.addEventListener("scroll", () => {
     scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
