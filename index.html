@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
       --primary: #ff4d4d;
@@ -87,6 +88,20 @@
       box-shadow: 0 0 25px #ff4d4daa;
     }
 
+    .floating-cta {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      background: #ff4d4d;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 0 15px #ff4d4d88;
+      text-decoration: none;
+      z-index: 999;
+    }
     .divider {
       height: 2px;
       background: linear-gradient(to right, transparent, #ff4d4d88, transparent);
@@ -192,44 +207,45 @@
     .scroll-top:hover {
       background: #e53935;
     }
-form input,
-form textarea {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-light);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 1rem;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
-}
 
-form input::placeholder,
-form textarea::placeholder {
-  color: var(--text-muted);
-}
+    form input,
+    form textarea {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 1rem;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+    }
 
-form input:focus,
-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 10px var(--primary);
-  border-color: var(--primary);
-}
+    form input::placeholder,
+    form textarea::placeholder {
+      color: var(--text-muted);
+    }
 
-form button.cta {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.1rem;
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff4d4d88;
-  transition: all 0.3s ease;
-}
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px var(--primary);
+      border-color: var(--primary);
+    }
 
-form button.cta:hover {
-  background: #e53935;
-  box-shadow: 0 0 25px #ff4d4daa;
-}
+    form button.cta {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff4d4d88;
+      transition: all 0.3s ease;
+    }
+
+    form button.cta:hover {
+      background: #e53935;
+      box-shadow: 0 0 25px #ff4d4daa;
+    }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
@@ -237,18 +253,15 @@ form button.cta:hover {
       .counters { flex-direction: column; align-items: center; }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CG45R84VWT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CG45R84VWT');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CG45R84VWT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CG45R84VWT');
+  </script>
 </head>
 <body>
-
 <nav>
   <span>MoodleSupport.in</span>
 </nav>
@@ -259,8 +272,9 @@ form button.cta:hover {
   <a href="#portfolio" class="cta">View My Work</a>
 </section>
 
-<div class="divider"></div>
+<a href="mailto:ch1106851030@gmail.com" class="floating-cta">📬 Get Moodle Help</a>
 
+<div class="divider"></div>
 <section class="counters">
   <div class="counter">
     <h3 id="count1">0</h3>
@@ -278,7 +292,7 @@ form button.cta:hover {
 
 <div class="divider"></div>
 
-<section class="cards" id="cards">
+<section class="cards" id="cards" data-aos="fade-up">
   <div class="card">
     <h3>🔐 Login & Access</h3>
     <div class="content">
@@ -289,7 +303,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>📚 Teacher Support</h3>
     <div class="content">
@@ -300,7 +313,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>🎓 Student Help</h3>
     <div class="content">
@@ -311,7 +323,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>🛠️ Admin Zone</h3>
     <div class="content">
@@ -330,7 +341,7 @@ form button.cta:hover {
   <h1>Our Expertise</h1>
 </section>
 
-<section class="cards" id="portfolio">
+<section class="cards" id="portfolio" data-aos="fade-up">
   <div class="card">
     <h3>🌐 Moodle on Cloud/In House Linux Server</h3>
     <div class="content">
@@ -342,7 +353,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>📊 Grade Lookup Tool</h3>
     <div class="content">
@@ -353,7 +363,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>📄 Transcript Viewer Block</h3>
     <div class="content">
@@ -364,7 +373,6 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
     <h3>🧩 Plugin Integration & Tuning</h3>
     <div class="content">
@@ -375,34 +383,48 @@ form button.cta:hover {
       </ul>
     </div>
   </div>
-
   <div class="card">
-  <h3>🔐 OAuth2 Login Integration</h3>
-  <div class="content">
-    <ul>
-      <li>Enabled secure login via Google and Microsoft accounts</li>
-      <li>Configured OAuth2 services with client secrets and scopes</li>
-      <li>Ensured SSO for both students and faculty</li>
-      <li>Works across subdomains and internal IP-based servers</li>
-    </ul>
+    <h3>🔐 OAuth2 Login Integration</h3>
+    <div class="content">
+      <ul>
+        <li>Enabled secure login via Google and Microsoft accounts</li>
+        <li>Configured OAuth2 services with client secrets and scopes</li>
+        <li>Ensured SSO for both students and faculty</li>
+        <li>Works across subdomains and internal IP-based servers</li>
+      </ul>
+    </div>
   </div>
-</div>
-
 </section>
 
-  <div class="divider"></div>
+<div class="divider"></div>
 
-<section style="text-align: center; padding: 60px 20px;">
+<section style="text-align: center; padding: 60px 20px;" data-aos="zoom-in">
   <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    📘 Explore My Moodle Blog
+    📰 Explore My Moodle Blog
   </h2>
   <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
     Step-by-step tutorials, deployment guides, and real fixes from the field
   </p>
   <a href="blog.html" class="cta" style="padding: 15px 40px; font-size: 1.1rem;">Read Articles</a>
 </section>
+
 <div class="divider"></div>
-<section style="padding: 60px 20px; text-align: center;">
+
+<section style="padding: 60px 20px; text-align: center;" data-aos="fade-up">
+  <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    💬 Testimonials
+  </h2>
+  <div style="max-width: 800px; margin: auto; font-size: 1.05rem; color: #ccc;">
+    <p>“Prateek set up our Moodle portal from scratch, configured Google login, and provided training to over 50 faculty — everything worked flawlessly.”</p>
+    <p style="color:#ffb347; margin-bottom:30px;">– LMS Coordinator, Govt. Institute</p>
+    <p>“We had Moodle errors during exams. Prateek fixed everything within hours and added auto-backup jobs. Highly recommended.”</p>
+    <p style="color:#ffb347;">– Technical Admin, Online Program</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding: 60px 20px; text-align: center;" data-aos="fade-up">
   <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
     📩 Contact Me
   </h2>
@@ -421,7 +443,10 @@ form button.cta:hover {
 
 <div class="scroll-top" id="scrollTopBtn">↑</div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+  AOS.init({ once: true });
+
   function animateCounter(id, end, duration) {
     let el = document.getElementById(id);
     let start = 0;
@@ -461,3 +486,4 @@ form button.cta:hover {
 
 </body>
 </html>
+
