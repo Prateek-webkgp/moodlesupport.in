@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="MoodleSupport.in – Expert Moodle deployment, support, and tutorials. Trusted by institutes and educators for cloud hosting, customization, and training.">
   <title>MoodleSupport.in – Moodle Help Desk</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" alt="MoodleSupport Logo">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" alt="MoodleSupport Logo">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" alt="MoodleSupport Logo">
   <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts & AOS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
   <style>
     :root {
       --primary: #ff4d4d;
@@ -18,26 +24,22 @@
       --text-light: #eeeeee;
       --text-muted: #aaaaaa;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
       color: var(--text-light);
       background: linear-gradient(270deg, #0d0c1d, #1e1b2e, #0d0c1d);
       background-size: 600% 600%;
       animation: gradientShift 18s ease infinite;
+      scroll-behavior: smooth;
     }
-
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
+    /* Navigation */
     nav {
       background: var(--primary);
       padding: 15px 20px;
@@ -46,31 +48,31 @@
       top: 0;
       z-index: 100;
     }
-
-    nav span {
-      font-size: 1.4rem;
-      font-weight: bold;
+    nav a {
+      margin: 0 12px;
       color: white;
+      text-decoration: none;
+      font-weight: 600;
     }
+    nav a.active { border-bottom: 2px solid white; }
 
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 100px 20px 60px;
     }
-
     .hero h1 {
       font-size: 3rem;
       background: linear-gradient(90deg, #ff4d4d, #ffb347);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease-out;
     }
-
     .hero h2 {
       font-size: 1.5rem;
       color: var(--text-muted);
-      margin-bottom: 30px;
+      margin: 15px 0 30px;
     }
-
     .hero .cta {
       background: #ff4d4d;
       color: white;
@@ -78,14 +80,17 @@
       border-radius: 6px;
       font-weight: bold;
       text-decoration: none;
-      display: inline-block;
       box-shadow: 0 0 15px #ff4d4d88;
       transition: all 0.3s ease;
     }
-
     .hero .cta:hover {
       background: #e53935;
       box-shadow: 0 0 25px #ff4d4daa;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .floating-cta {
@@ -102,6 +107,7 @@
       text-decoration: none;
       z-index: 999;
     }
+
     .divider {
       height: 2px;
       background: linear-gradient(to right, transparent, #ff4d4d88, transparent);
@@ -109,6 +115,7 @@
       width: 80%;
     }
 
+    /* Counters */
     .counters {
       display: flex;
       justify-content: center;
@@ -117,22 +124,15 @@
       text-align: center;
       padding: 40px 20px;
     }
-
-    .counter {
-      flex: 1 1 200px;
-    }
-
     .counter h3 {
       font-size: 2.5rem;
       color: #ffb347;
       text-shadow: 0 0 10px #ffb34766;
     }
+    .counter p { margin-top: 10px; color: var(--text-muted); }
+    .counter span { font-size: 1.5rem; vertical-align: super; }
 
-    .counter p {
-      margin-top: 10px;
-      color: var(--text-muted);
-    }
-
+    /* Cards */
     .cards {
       display: flex;
       flex-wrap: wrap;
@@ -142,7 +142,6 @@
       margin: auto;
       justify-content: center;
     }
-
     .card {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
@@ -151,16 +150,13 @@
       width: 100%;
       max-width: 450px;
       box-shadow: 0 0 15px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.4s ease;
       cursor: pointer;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      max-height: 110px;
     }
-
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
-    }
-
+    .card:hover { transform: scale(1.02) rotate3d(1, 1, 0, 5deg); }
     .card h3 {
       margin: 0 0 10px;
       font-size: 1.4rem;
@@ -168,27 +164,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .card .content { font-size: 0.95rem; color: #ccc; opacity: 0; transition: opacity 0.3s ease; }
+    .card.active { max-height: 400px; }
+    .card.active .content { opacity: 1; margin-top: 15px; }
 
-    .card .content {
-      display: none;
-      margin-top: 15px;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
+    /* Testimonials */
+    .testimonial { display: none; }
+    .testimonial.active { display: block; animation: fadeInUp 0.8s ease; }
 
-    .card.active .content {
-      display: block;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: #0c0b18;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: 60px;
-    }
-
+    /* Scroll Top */
     .scroll-top {
       position: fixed;
       bottom: 25px;
@@ -199,53 +183,22 @@
       border-radius: 50%;
       font-size: 20px;
       cursor: pointer;
-      display: none;
-      box-shadow: 0 0 10px #ff4d4d88;
-      transition: background 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
+    .scroll-top.show { opacity: 1; pointer-events: auto; }
 
-    .scroll-top:hover {
-      background: #e53935;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #0c0b18;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 60px;
     }
-
-    form input,
-    form textarea {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-light);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      font-size: 1rem;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
-    }
-
-    form input::placeholder,
-    form textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    form input:focus,
-    form textarea:focus {
-      outline: none;
-      box-shadow: 0 0 10px var(--primary);
-      border-color: var(--primary);
-    }
-
-    form button.cta {
-      width: 100%;
-      padding: 12px;
-      font-size: 1.1rem;
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff4d4d88;
-      transition: all 0.3s ease;
-    }
-
-    form button.cta:hover {
-      background: #e53935;
-      box-shadow: 0 0 25px #ff4d4daa;
-    }
+    footer a { color: white; margin: 0 10px; text-decoration: none; }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
@@ -253,238 +206,127 @@
       .counters { flex-direction: column; align-items: center; }
     }
   </style>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CG45R84VWT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CG45R84VWT');
+    gtag('js', new Date()); gtag('config', 'G-CG45R84VWT');
   </script>
 </head>
 <body>
-<nav>
-  <span>MoodleSupport.in</span>
-</nav>
+<header>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<section class="hero">
-  <h1>Welcome to MoodleSupport</h1>
-  <h2>Your trusted source for Moodle help & tutorials</h2>
-  <a href="#portfolio" class="cta">View My Work</a>
-</section>
+<main id="home">
+  <section class="hero">
+    <h1>Moodle Support Simplified</h1>
+    <h2>Deploy • Customize • Train — All-in-One Moodle Help Desk</h2>
+    <a href="#portfolio" class="cta">View My Work</a>
+  </section>
 
-<a href="#contact" class="floating-cta">📬 Get Moodle Help</a>
+  <a href="#contact" class="floating-cta">📬 Get Moodle Help</a>
 
-<div class="divider"></div>
-<section class="counters">
-  <div class="counter">
-    <h3 id="count1">0</h3>
-    <p>Moodle Portals Supported</p>
-  </div>
-  <div class="counter">
-    <h3 id="count2">0</h3>
-    <p>Teachers Helped</p>
-  </div>
-  <div class="counter">
-    <h3 id="count3">0</h3>
-    <p>Students Reached</p>
-  </div>
-</section>
+  <div class="divider"></div>
+  <section class="counters">
+    <div class="counter"><h3 id="count1">0</h3><p>Moodle Portals Supported</p></div>
+    <div class="counter"><h3 id="count2">0</h3><p>Teachers Helped</p></div>
+    <div class="counter"><h3 id="count3">0</h3><p>Students Reached</p></div>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
+  <section class="cards" id="cards" data-aos="fade-up">
+    <div class="card"><h3>🔐 Login & Access</h3><div class="content"><ul><li>Step-by-step login guide</li><li>Password reset tips</li><li>Mobile access help</li></ul></div></div>
+    <div class="card"><h3>📚 Teacher Support</h3><div class="content"><ul><li>Create courses & upload</li><li>Set quizzes & assignments</li><li>Grading & feedback</li></ul></div></div>
+    <div class="card"><h3>🎓 Student Help</h3><div class="content"><ul><li>Dashboard navigation</li><li>Submit assignments</li><li>Track grades & forums</li></ul></div></div>
+    <div class="card"><h3>🛠️ Admin Zone</h3><div class="content"><ul><li>Manage users & roles</li><li>Install plugins</li><li>Backups & tuning</li></ul></div></div>
+  </section>
 
-<section class="cards" id="cards" data-aos="fade-up">
-  <div class="card">
-    <h3>🔐 Login & Access</h3>
-    <div class="content">
-      <ul>
-        <li>Step-by-step login guide for students and faculty</li>
-        <li>Password reset and access tips</li>
-        <li>Mobile-friendly access support</li>
-      </ul>
+  <div class="divider"></div>
+  <section style="text-align:center; padding:60px 20px;" id="portfolio" data-aos="fade-up">
+    <h2 style="font-size:2rem;background:linear-gradient(90deg,#ff4d4d,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🌐 Our Expertise</h2>
+    <p style="color:var(--text-muted);font-size:1.1rem;">Trusted by institutes for reliable, scalable Moodle deployments</p>
+  </section>
+
+  <section class="cards" data-aos="fade-up">
+    <div class="card"><h3>☁️ Moodle on Cloud/Linux</h3><div class="content"><ul><li>Deployed Moodle 4.x</li><li>Apache, MySQL, PHP setup</li><li>SSL & cron jobs</li><li>Optimized uptime</li></ul></div></div>
+    <div class="card"><h3>📊 Grade Lookup Tool</h3><div class="content"><ul><li>Built grade lookup utility</li><li>Role-based access</li><li>Multi-course support</li></ul></div></div>
+    <div class="card"><h3>📄 Transcript Viewer Block</h3><div class="content"><ul><li>Custom block for transcripts</li><li>Filters by cohort</li><li>Export-ready layout</li></ul></div></div>
+    <div class="card"><h3>🧩 Plugin Integration</h3><div class="content"><ul><li>Integrated BBB, Attendance</li><li>Performance tuning</li><li>Resolved DB conflicts</li></ul></div></div>
+    <div class="card"><h3>🔐 OAuth2 Login</h3><div class="content"><ul><li>Google & Microsoft login</li><li>SSO for students & faculty</li><li>Cross-subdomain support</li></ul></div></div>
+  </section>
+
+  <div class="divider"></div>
+  <section id="blog" style="text-align:center; padding:60px 20px;" data-aos="zoom-in">
+    <h2 style="font-size:2rem;background:linear-gradient(90deg,#ff4d4d,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📰 Latest Blog Articles</h2>
+    <p style="color:var(--text-muted);font-size:1.1rem;margin-bottom:30px;">Step-by-step tutorials and fixes from the field</p>
+    <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+      <article style="background:rgba(255,255,255,0.05);padding:15px;border-radius:8px;">How to Deploy Moodle on Ubuntu – A Full Guide</article>
+      <article style="background:rgba(255,255,255,0.05);padding:15px;border-radius:8px;">Fixing Moodle Email Issues with Postfix</article>
+      <article style="background:rgba(255,255,255,0.05);padding:15px;border-radius:8px;">Integrating Google SSO with Moodle</article>
     </div>
-  </div>
-  <div class="card">
-    <h3>📚 Teacher Support</h3>
-    <div class="content">
-      <ul>
-        <li>Creating courses and uploading materials</li>
-        <li>Setting up quizzes and assignments</li>
-        <li>Grading and giving feedback</li>
-      </ul>
+    <a href="blog.html" class="cta" style="margin-top:20px;display:inline-block;">Read More</a>
+  </section>
+
+  <div class="divider"></div>
+  <section style="text-align:center; padding:60px 20px;" data-aos="fade-up">
+    <h2 style="font-size:2rem;background:linear-gradient(90deg,#ff4d4d,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">💬 Testimonials</h2>
+    <div style="max-width:800px;margin:auto;color:#ccc;">
+      <div class="testimonial active"><p>“Moodlesupport.in set up our Moodle portal from scratch and trained over 50 faculty.”</p><p style="color:#ffb347;">– Institute of National Importance</p></div>
+      <div class="testimonial"><p>“They fixed Moodle errors during exams within hours and added auto-backups. Highly recommended.”</p><p style="color:#ffb347;">– Technical Admin, Online Programs</p></div>
     </div>
-  </div>
-  <div class="card">
-    <h3>🎓 Student Help</h3>
-    <div class="content">
-      <ul>
-        <li>Navigating the dashboard</li>
-        <li>Submitting assignments and taking quizzes</li>
-        <li>Tracking grades and forum discussions</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card">
-    <h3>🛠️ Admin Zone</h3>
-    <div class="content">
-      <ul>
-        <li>Managing users and roles</li>
-        <li>Installing plugins and automation</li>
-        <li>Backups and performance tuning</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
-
-<section class="hero">
-  <h1>Our Expertise</h1>
-</section>
-
-<section class="cards" id="portfolio" data-aos="fade-up">
-  <div class="card">
-    <h3>🌐 Moodle on Cloud/In House Linux Server</h3>
-    <div class="content">
-      <ul>
-        <li>Deployed Moodle 4.x on free-tier Ubuntu server</li>
-        <li>Configured Apache, MySQL, PHP, and cron jobs</li>
-        <li>Enabled SSL, domain mapping, and email setup</li>
-        <li>Optimized performance and uptime with shell scripts</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card">
-    <h3>📊 Grade Lookup Tool</h3>
-    <div class="content">
-      <ul>
-        <li>Built a site-wide grade lookup utility using PHP</li>
-        <li>Role-based access for faculty and students</li>
-        <li>Supports multi-course grade aggregation</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card">
-    <h3>📄 Transcript Viewer Block</h3>
-    <div class="content">
-      <ul>
-        <li>Custom Moodle block for quick transcript views</li>
-        <li>Filters by email, cohort, or batch</li>
-        <li>Export-ready layout for offline storage</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card">
-    <h3>🧩 Plugin Integration & Tuning</h3>
-    <div class="content">
-      <ul>
-        <li>Integrated plugins like BigBlueButton, Attendance, and Custom Certificates</li>
-        <li>Tuned server settings for real-time sessions</li>
-        <li>Resolved plugin conflicts and updated DB schemas</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card">
-    <h3>🔐 OAuth2 Login Integration</h3>
-    <div class="content">
-      <ul>
-        <li>Enabled secure login via Google and Microsoft accounts</li>
-        <li>Configured OAuth2 services with client secrets and scopes</li>
-        <li>Ensured SSO for both students and faculty</li>
-        <li>Works across subdomains and internal IP-based servers</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section style="text-align: center; padding: 60px 20px;" data-aos="zoom-in">
-  <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    📰 Explore My Moodle Blog
-  </h2>
-  <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
-    Step-by-step tutorials, deployment guides, and real fixes from the field
-  </p>
-  <a href="blog.html" class="cta" style="padding: 15px 40px; font-size: 1.1rem;">Read Articles</a>
-</section>
-
-<div class="divider"></div>
-
-<section style="padding: 60px 20px; text-align: center;" data-aos="fade-up">
-  <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    💬 Testimonials
-  </h2>
-  <div style="max-width: 800px; margin: auto; font-size: 1.05rem; color: #ccc;">
-    <p>“Moodlesupport.in's Team set up our Moodle portal from scratch, configured Google login, and provided training to over 50 faculty — everything worked flawlessly.”</p>
-    <p style="color:#ffb347; margin-bottom:30px;">– Institute of National Importance</p>
-    <p>“We had Moodle errors during exams. Moodlesupport.in's Team fixed everything within hours and added auto-backup jobs. Highly recommended.”</p>
-    <p style="color:#ffb347;">– Technical Admin, Online Programs</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="contact" style="padding: 60px 20px; text-align: center;">
-  <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ff4d4d, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    📩 Contact Me
-  </h2>
-  <p style="color: var(--text-muted); font-size: 1.1rem;">Have a Moodle project or need LMS support? Send me a message.</p>
-  <form action="https://formspree.io/f/mgvyblob" method="POST" style="max-width: 500px; margin: 30px auto;">
-    <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: none;">
-    <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: none;">
-    <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: none;" rows="5"></textarea>
-    <button type="submit" class="cta" style="margin-top: 10px;">Send Message</button>
-  </form>
-</section>
+  <div class="divider"></div>
+  <section id="contact" style="padding:60px 20px; text-align:center;">
+    <h2 style="font-size:2rem;background:linear-gradient(90deg,#ff4d4d,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📩 Contact Me</h2>
+    <p style="color:var(--text-muted); font-size:1.1rem;">Have a Moodle project? Let's discuss.</p>
+    <form action="https://formspree.io/f/mgvyblob" method="POST" style="max-width:500px;margin:30px auto;">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:12px;margin:10px 0;border-radius:6px;">
+      <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:12px;margin:10px 0;border-radius:6px;">
+      <textarea name="message" placeholder="Your Message" required rows="5" style="width:100%;padding:12px;margin:10px 0;border-radius:6px;"></textarea>
+      <button type="submit" class="cta" style="margin-top:10px;">Send Message</button>
+    </form>
+    <div id="form-status" style="margin-top:15px; color:#ffb347;"></div>
+  </section>
+</main>
 
 <footer>
-  <a href="pricing.html" style="color:white; margin-left:20px;">Pricing</a>
-  &copy; 2025 MoodleSupport.in – Created with ❤️
+  <a href="#home">Home</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contact</a>
+  <p>&copy; 2025 MoodleSupport.in – Created with ❤️</p>
 </footer>
 
 <div class="scroll-top" id="scrollTopBtn">↑</div>
 
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({ once: true });
 
+  // Animated Counters
   function animateCounter(id, end, duration) {
     let el = document.getElementById(id);
     let start = 0;
     let step = Math.ceil(end / (duration / 30));
     let interval = setInterval(() => {
       start += step;
-      if (start >= end) {
-        el.innerText = end + '+';
-        clearInterval(interval);
-      } else {
-        el.innerText = start;
-      }
+      if (start >= end) { el.innerHTML = end + '<span>+</span>'; clearInterval(interval); }
+      else { el.innerText = start; }
     }, 30);
   }
-
   window.addEventListener('DOMContentLoaded', () => {
     animateCounter('count1', 5, 1000);
     animateCounter('count2', 200, 1200);
     animateCounter('count3', 7000, 1500);
-  });
-
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('active');
-    });
-  });
-
-  const scrollBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-  });
-
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
-</body>
-</html>
-
+ 
