@@ -3,405 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Moodle Support - Deployment, customization, and training for institutions and learners." />
   <title>Moodle Support</title>
-
-  <!-- AOS Animation Library -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
   <style>
-    /* ========== RESET & BASE ========== */
-    * {margin:0;padding:0;box-sizing:border-box;}
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #151521);
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
-    a {color:inherit;text-decoration:none;}
-
-    /* ========== NAVBAR ========== */
-    nav {
-      position: fixed;top:0;left:0;width:100%;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 2rem;
-      background: rgba(20,20,30,0.9);
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      z-index:1000;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     }
-    nav .logo {font-size:1.5rem;font-weight:bold;color:#ff7ef3;}
-    nav ul {list-style:none;display:flex;gap:1.5rem;}
-    nav ul li a {
-      padding:5px 10px;
-      border-radius:5px;
-      transition:all 0.3s ease;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
     }
-    nav ul li a:hover, nav ul li a.active {
-      background:#ff7ef3;color:#000;
+    header h2 {
+      font-size: 1.2rem;
+      color: #ddd;
     }
-
-    /* ========== HERO ========== */
-    header.hero {
-      height:100vh;
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;
-      padding:0 1rem;
-      background: linear-gradient(135deg,#6a11cb,#2575fc);
-    }
-    .hero h1 {font-size:3rem;margin-bottom:1rem;}
-    .hero h2 {font-size:1.5rem;height:2rem;}
-    .hero p {margin-top:1rem;font-size:1.1rem;color:#f5f5f5;}
-    .hero button {
-      margin-top:2rem;
-      padding:0.75rem 1.5rem;
-      border:none;
-      border-radius:25px;
-      font-size:1rem;
-      cursor:pointer;
-      background: linear-gradient(90deg,#ff7ef3,#ff4ecd);
-      color:#fff;
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .hero button:hover {
-      transform:translateY(-3px);
-      box-shadow:0 5px 15px rgba(255,126,243,0.5);
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff416c; }
+      to { text-shadow: 0 0 20px #ff4b2b; }
     }
 
-    /* ========== SECTIONS ========== */
-    section {
-      padding:5rem 2rem;
-      max-width:1200px;
-      margin:auto;
-    }
-    section h2 {
-      text-align:center;
-      font-size:2rem;
-      margin-bottom:2rem;
-      color:#ff7ef3;
-      position:relative;
-    }
-    section h2::after {
-      content:"";
-      display:block;
-      width:80px;height:4px;
-      background:linear-gradient(90deg,#ff7ef3,#ff4ecd);
-      margin:10px auto 0;
-      border-radius:2px;
-    }
-
-    /* ========== CARDS ========== */
-    .cards {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:2rem;
-    }
-    .card {
-      background:rgba(255,255,255,0.05);
-      border-radius:15px;
-      padding:2rem;
-      text-align:center;
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-      cursor:pointer;
-    }
-    .card:hover {
-      transform:translateY(-10px) rotate3d(1,1,0,5deg);
-      box-shadow:0 8px 25px rgba(0,0,0,0.5);
-      background:rgba(255,255,255,0.08);
-    }
-    .card svg {
-      width:40px;height:40px;
-      fill:#ff7ef3;margin-bottom:1rem;
-    }
-    .card p {
-      max-height:0;
-      overflow:hidden;
-      transition:max-height 0.5s ease;
-    }
-    .card.active p {max-height:200px;margin-top:1rem;}
-
-    /* ========== COUNTERS ========== */
     .counters {
-      display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;
-      text-align:center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      text-align: center;
     }
     .counter {
-      font-size:2.5rem;font-weight:bold;
-      color:#ff7ef3;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffcc70;
     }
-    .counter-label {font-size:1.1rem;color:#ccc;}
 
-    /* ========== TESTIMONIALS ========== */
-    .testimonial {
-      opacity:0;transition:opacity 1s ease;
-      text-align:center;
-      font-style:italic;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
     }
-    .testimonial.active {opacity:1;}
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+    .card h3 {
+      margin-bottom: 1rem;
+      color: #ffcc70;
+    }
 
-    /* ========== TRUSTED BY ========== */
-    .trusted-logos {
-      display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;align-items:center;
+    .portfolio, .blog, .contact {
+      padding: 3rem 1rem;
+      text-align: center;
     }
-    .trusted-logos img {
-      height:50px;filter:grayscale(100%) brightness(200%);
-      transition:filter 0.3s ease;
+    .portfolio h2, .blog h2, .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ff9966, #ff5e62);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .trusted-logos img:hover {filter:none;}
 
-    /* ========== CONTACT ========== */
     form {
-      display:flex;flex-direction:column;gap:1rem;
-      max-width:500px;margin:auto;
+      max-width: 500px;
+      margin: 1rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
     }
     input, textarea {
-      padding:0.75rem;border-radius:8px;border:none;
-      outline:none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
     }
-    button[type="submit"] {
-      background:linear-gradient(90deg,#2575fc,#6a11cb);
-      color:#fff;font-weight:bold;
-      cursor:pointer;
-      border:none;padding:0.75rem;border-radius:25px;
-      transition:transform 0.3s ease;
+    button {
+      background: linear-gradient(45deg, #36d1dc, #5b86e5);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    button[type="submit"]:hover {transform:translateY(-2px);}
+    button:hover {
+      opacity: 0.85;
+    }
 
-    #form-status {text-align:center;margin-top:1rem;}
-    #form-status .success {color:lime;}
-    #form-status .error {color:red;}
-
-    /* ========== FOOTER ========== */
     footer {
-      background:#111;padding:2rem;text-align:center;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #aaa;
     }
-    footer .links {
-      margin-bottom:1rem;
-      display:flex;justify-content:center;gap:1.5rem;
-    }
-    footer .social {
-      display:flex;justify-content:center;gap:1rem;margin-top:1rem;
-    }
-    footer .social a {font-size:1.5rem;color:#ff7ef3;transition:0.3s;}
-    footer .social a:hover {color:#fff;}
 
-    /* ========== SCROLL TOP BTN ========== */
     #scrollTopBtn {
-      display:none;
-      position:fixed;bottom:30px;right:30px;
-      background:#ff7ef3;color:#000;
-      border:none;border-radius:50%;
-      width:45px;height:45px;
-      font-size:1.2rem;
-      cursor:pointer;
-      transition:opacity 0.3s ease;
-      z-index:1000;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      border: none;
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      transition: 0.3s;
+    }
+    #scrollTopBtn:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      .counters { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav>
-    <div class="logo">MoodleSupport</div>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#counters">Stats</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero" id="hero">
-    <h1>Moodle Deployment & Support</h1>
-    <h2 id="typing"></h2>
-    <p>End-to-end support for institutions, faculty, and learners.</p>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Support</button>
+  <header>
+    <h1>Moodle Support</h1>
+    <h2>Your trusted source for Moodle help & tutorials</h2>
   </header>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <h2>Our Expertise</h2>
-    <div class="cards">
-      <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7h20L12 2zm0 2.2L18.6 7H5.4L12 4.2zM2 9v2h20V9H2zm0 4v2h20v-2H2zm0 4v2h20v-2H2z"/></svg>
-        <h3>Deployment</h3>
-        <p>We provide secure Moodle installations with cloud/server integration.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 4h12v2H3V7zm0 4h18v2H3v-2zm0 4h12v2H3v-2zm0 4h18v2H3v-2z"/></svg>
-        <h3>Customization</h3>
-        <p>We customize Moodle themes, plugins, and workflows tailored for you.</p>
-      </div>
-      <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
-        <h3>Training</h3>
-        <p>Hands-on workshops and capacity building for faculty and staff.</p>
-      </div>
+  <section class="counters" data-aos="fade-up">
+    <div>
+      <div id="count1" class="counter">0</div>
+      <p>Years Experience</p>
+    </div>
+    <div>
+      <div id="count2" class="counter">0</div>
+      <p>Projects Completed</p>
+    </div>
+    <div>
+      <div id="count3" class="counter">0</div>
+      <p>Students Reached</p>
     </div>
   </section>
 
-  <!-- COUNTERS -->
-  <section id="counters">
-    <h2>Impact in Numbers</h2>
-    <div class="counters">
-      <div>
-        <div id="count1" class="counter">0</div>
-        <div class="counter-label">Years of Experience</div>
-      </div>
-      <div>
-        <div id="count2" class="counter">0</div>
-        <div class="counter-label">Projects Delivered</div>
-      </div>
-      <div>
-        <div id="count3" class="counter">0</div>
-        <div class="counter-label">Learners Reached</div>
-      </div>
-    </div>
+  <section class="cards" data-aos="fade-up">
+    <div class="card"><h3>Custom Plugins</h3><p>Develop tailored Moodle plugins for your needs.</p></div>
+    <div class="card"><h3>Theme Design</h3><p>Create modern, responsive Moodle themes.</p></div>
+    <div class="card"><h3>Hosting Support</h3><p>Assistance with setup and deployment.</p></div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <h2>What Clients Say</h2>
-    <div class="testimonial active">"MoodleSupport transformed our online learning experience!"</div>
-    <div class="testimonial">"Quick, reliable, and professional service throughout."</div>
-    <div class="testimonial">"Our faculty loved the hands-on training sessions."</div>
+  <section class="portfolio" data-aos="fade-up">
+    <h2>Portfolio</h2>
+    <p>Showcasing our past Moodle projects and case studies.</p>
   </section>
 
-  <!-- TRUSTED BY -->
-  <section id="trusted">
-    <h2>Trusted By</h2>
-    <div class="trusted-logos">
-      <img src="logo1.png" alt="Client Logo 1" loading="lazy" />
-      <img src="logo2.png" alt="Client Logo 2" loading="lazy" />
-      <img src="logo3.png" alt="Client Logo 3" loading="lazy" />
-    </div>
+  <section class="blog" data-aos="fade-up">
+    <h2>Blog</h2>
+    <p>Latest articles, tips, and updates on Moodle.</p>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Get in Touch</h2>
-    <form action="https://formspree.io/f/mayvlqpd" method="POST" id="contact-form">
+  <section class="contact" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/yourformid" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-      <div id="form-status"></div>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="links">
-      <a href="#services">Services</a>
-      <a href="#counters">Stats</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <p>&copy; 2025 MoodleSupport. All rights reserved.</p>
-    <div class="social">
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
+    <p>&copy; 2025 Moodle Support. All Rights Reserved.</p>
   </footer>
 
-  <!-- Scroll to Top -->
-  <button id="scrollTopBtn">&#8679;</button>
+  <button id="scrollTopBtn">↑</button>
 
-  <!-- AOS & JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ once:true, duration:1000 });
+    AOS.init({ once: true, duration: 1000 });
 
-    // Counter animation
     function animateCounter(id, end, duration) {
-      let el=document.getElementById(id);
-      let start=0;
-      let step=Math.ceil(end/(duration/30));
-      let interval=setInterval(()=>{
-        start+=step;
-        if(start>=end){el.innerText=end+"+";clearInterval(interval);}
-        else{el.innerText=start;}
-      },30);
+      let el = document.getElementById(id);
+      let start = 0;
+      let step = Math.ceil(end / (duration / 30));
+      let interval = setInterval(() => {
+        start += step;
+        if (start >= end) {
+          el.innerText = end + '+';
+          clearInterval(interval);
+        } else {
+          el.innerText = start;
+        }
+      }, 30);
     }
-    window.addEventListener('DOMContentLoaded',()=>{
-      animateCounter('count1',5,1000);
-      animateCounter('count2',200,1200);
-      animateCounter('count3',7000,1500);
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounter('count1', 5, 1000);
+      animateCounter('count2', 200, 1200);
+      animateCounter('count3', 7000, 1500);
     });
 
-    // Expandable cards
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click',()=>{card.classList.toggle('active');});
-    });
-
-    // Scroll-to-top
-    const scrollBtn=document.getElementById("scrollTopBtn");
-    window.addEventListener("scroll",()=>{
-      scrollBtn.style.display=window.scrollY>300?"block":"none";
-    });
-    scrollBtn.addEventListener("click",()=>{
-      window.scrollTo({top:0,behavior:'smooth'});
-    });
-
-    // Typing effect
-    const words=["Deploy","Customize","Train"];
-    let i=0;let timer;
-    function typingEffect(){
-      let word=words[i].split("");
-      const loopTyping=()=>{
-        if(word.length>0){
-          document.getElementById("typing").innerHTML+=word.shift();
-          timer=setTimeout(loopTyping,150);
-        }else{deletingEffect();}
-      };
-      loopTyping();
-    }
-    function deletingEffect(){
-      let word=words[i].split("");
-      const loopDeleting=()=>{
-        if(word.length>0){
-          word.pop();
-          document.getElementById("typing").innerHTML=word.join("");
-          timer=setTimeout(loopDeleting,100);
-        }else{i=(i+1)%words.length;typingEffect();}
-      };
-      loopDeleting();
-    }
-    document.addEventListener("DOMContentLoaded",typingEffect);
-
-    // Testimonials rotation
-    const testimonials=document.querySelectorAll(".testimonial");
-    let testimonialIndex=0;
-    function showTestimonial(){
-      testimonials.forEach((t,idx)=>{
-        t.classList.remove("active");
-        if(idx===testimonialIndex){t.classList.add("active");}
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
       });
-      testimonialIndex=(testimonialIndex+1)%testimonials.length;
-    }
-    setInterval(showTestimonial,5000);
+    });
 
-    // Contact form status
-    const form=document.getElementById("contact-form");
-    form.addEventListener("submit",async(e)=>{
-      e.preventDefault();
-      const formData=new FormData(form);
-      const response=await fetch(form.action,{
-        method:form.method,
-        body:formData,
-        headers:{Accept:"application/json"},
-      });
-      if(response.ok){
-        document.getElementById("form-status").innerHTML="<p class='success'>Thank you! Your message has been sent.</p>";
-        form.reset();
-      }else{
-        document.getElementById("form-status").innerHTML="<p class='error'>Oops! Something went wrong.</p>";
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const heroText = document.querySelector("header h2");
+    if (heroText) {
+      const text = heroText.textContent;
+      heroText.textContent = "";
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          heroText.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 50);
+        }
       }
-    });
+      typeWriter();
+    }
+
+    const contactForm = document.querySelector("form[action*='formspree']");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function () {
+        alert("✅ Thank you! Your message has been sent.");
+      });
+    }
   </script>
-  <!-- FontAwesome Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
