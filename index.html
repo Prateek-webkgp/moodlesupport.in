@@ -2,417 +2,375 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MoodleSupport.in – Moodle Help Desk</title>
-  <meta name="description" content="MoodleSupport.in – Moodle help desk: login & access support, teacher support, student help, admin, plugins, OAuth2, etc." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodle Support</title>
   <style>
     :root {
-      --primary: #ff4d4d;
-      --secondary: #ffb347;
+      --primary: #2563eb;   /* Deep professional blue */
+      --secondary: #06b6d4; /* Cyan accent */
       --dark: #0d0c1d;
       --mid: #1e1b2e;
       --text-light: #eeeeee;
       --text-muted: #aaaaaa;
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--dark);
       color: var(--text-light);
-      background: linear-gradient(270deg, #0d0c1d, #1e1b2e, #0d0c1d);
-      background-size: 600% 600%;
-      animation: gradientShift 18s ease infinite;
-      line-height: 1.5;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    nav {
-      background: var(--primary);
-      padding: 15px 20px;
-      text-align: center;
-      position: sticky;
+    header {
+      position: fixed;
       top: 0;
-      z-index: 100;
-    }
-    nav span {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: white;
+      width: 100%;
+      background: rgba(13, 12, 29, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
     }
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px 60px;
-    }
-    .hero h1 {
-      font-size: 3rem;
+    header h1 {
+      font-size: 1.5rem;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: fadeInText 2s ease-in-out;
-    }
-    .hero h2 {
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-      min-height: 1.6em; /* so layout doesn’t jump with typing effect */
-    }
-    @keyframes fadeInText {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero .cta {
-      background: var(--primary);
-      color: white;
-      padding: 15px 30px;
-      border-radius: 6px;
       font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at top left, var(--mid), var(--dark));
+      padding: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 0 15px rgba(255,77,77,0.6);
-      transition: all 0.3s ease;
-    }
-    .hero .cta:hover {
-      background: #e53935;
-      box-shadow: 0 0 25px rgba(255,77,77,0.8);
-      transform: translateY(-3px);
     }
 
-    .floating-cta {
-      position: fixed;
-      bottom: 90px;
-      right: 25px;
-      background: var(--primary);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 0 15px rgba(255,77,77,0.6);
-      text-decoration: none;
-      z-index: 999;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .floating-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(255,77,77,0.8);
+    .btn:hover {
+      background: #1e4ed8;
+      box-shadow: 0 0 15px var(--secondary);
     }
 
-    .divider {
-      height: 2px;
-      background: linear-gradient(to right, transparent, rgba(255,77,77,0.6), transparent);
-      margin: 50px auto;
-      width: 80%;
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .counters {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    section h3 {
       text-align: center;
-      padding: 40px 20px;
-    }
-    .counter h3 {
-      font-size: 2.5rem;
-      color: var(--secondary);
-      text-shadow: 0 0 10px rgba( var(--secondary) , 0.5 );
-    }
-    .counter p {
-      margin-top: 10px;
-      color: var(--text-muted);
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      justify-content: center;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 10px;
-      padding: 20px;
-      width: 100%;
-      max-width: 450px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-    }
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.4rem;
-      background: linear-gradient(90deg, var(--primary), #ff9999);
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .card .content {
-      display: none;
-      margin-top: 15px;
-      font-size: 0.95rem;
-      color: #ccc;
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
-    .card.active .content {
-      display: block;
+
+    .card {
+      background: rgba(30, 27, 46, 0.85);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .card h4 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: var(--secondary);
+    }
+
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
     }
 
     footer {
+      background: var(--mid);
       text-align: center;
-      padding: 30px 20px;
-      background: #0c0b18;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: 60px;
+      padding: 2rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
     }
+
     footer a {
-      color: white;
-      margin: 0 10px;
+      color: var(--secondary);
       text-decoration: none;
     }
 
-    .scroll-top {
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    #scrollTop {
       position: fixed;
       bottom: 25px;
       right: 25px;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
       background: var(--primary);
-      color: white;
-      padding: 12px 18px;
+      color: #fff;
+      border: none;
       border-radius: 50%;
-      font-size: 20px;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       display: none;
-      box-shadow: 0 0 10px rgba(255,77,77,0.6);
       transition: background 0.3s ease;
     }
-    .scroll-top:hover {
-      background: #e53935;
+
+    #scrollTop:hover {
+      background: #1e4ed8;
     }
 
-    form input,
-    form textarea {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-light);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      font-size: 1rem;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 6px;
-      width: 100%;
-      margin: 10px 0;
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    form input::placeholder,
-    form textarea::placeholder {
-      color: var(--text-muted);
-    }
-    form input:focus,
-    form textarea:focus {
-      outline: none;
-      box-shadow: 0 0 10px var(--primary);
-      border-color: var(--primary);
-    }
-    form button.cta {
-      width: 100%;
-      padding: 12px;
-      font-size: 1.1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(255,77,77,0.6);
-      transition: all 0.3s ease;
-    }
-    form button.cta:hover {
-      background: #e53935;
-      box-shadow: 0 0 25px rgba(255,77,77,0.8);
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero h2 { font-size: 1.2rem; }
-      .counters { flex-direction: column; align-items: center; }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 3rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <nav><span>MoodleSupport.in</span></nav>
+  <header>
+    <h1>Moodle Support</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <section class="hero">
-    <h1>Welcome to MoodleSupport</h1>
-    <h2>Your trusted source for Moodle help & tutorials</h2>
-    <a href="#portfolio" class="cta">View My Work</a>
-  </section>
-
-  <a href="#contact" class="floating-cta">📬 Get Moodle Help</a>
-
-  <div class="divider"></div>
-
-  <section class="counters" data-aos="fade-up">
-    <div class="counter"><h3 id="count1">0</h3><p>Moodle Portals Supported</p></div>
-    <div class="counter"><h3 id="count2">0</h3><p>Teachers Helped</p></div>
-    <div class="counter"><h3 id="count3">0</h3><p>Students Reached</p></div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="cards" id="cards" data-aos="fade-up">
-    <div class="card"><h3>🔐 Login & Access</h3><div class="content"><ul><li>Step-by-step login guide for students and faculty</li><li>Password reset and access tips</li><li>Mobile-friendly access support</li></ul></div></div>
-    <div class="card"><h3>📚 Teacher Support</h3><div class="content"><ul><li>Creating courses and uploading materials</li><li>Setting up quizzes and assignments</li><li>Grading and giving feedback</li></ul></div></div>
-    <div class="card"><h3>🎓 Student Help</h3><div class="content"><ul><li>Navigating the dashboard</li><li>Submitting assignments and taking quizzes</li><li>Tracking grades and forum discussions</li></ul></div></div>
-    <div class="card"><h3>🛠️ Admin Zone</h3><div class="content"><ul><li>Managing users and roles</li><li>Installing plugins and automation</li><li>Backups and performance tuning</li></ul></div></div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="cards" id="portfolio" data-aos="fade-up">
-    <div class="card"><h3>🌐 Moodle on Cloud/In House Linux Server</h3><div class="content"><ul><li>Deployed Moodle 4.x on free-tier Ubuntu server</li><li>Configured Apache, MySQL, PHP, and cron jobs</li><li>Enabled SSL, domain mapping, and email setup</li><li>Optimized performance and uptime with shell scripts</li></ul></div></div>
-    <div class="card"><h3>📊 Grade Lookup Tool</h3><div class="content"><ul><li>Built a site-wide grade lookup utility using PHP</li><li>Role-based access for faculty and students</li><li>Supports multi-course grade aggregation</li></ul></div></div>
-    <div class="card"><h3>📄 Transcript Viewer Block</h3><div class="content"><ul><li>Custom Moodle block for quick transcript views</li><li>Filters by email, cohort, or batch</li><li>Export-ready layout for offline storage</li></ul></div></div>
-    <div class="card"><h3>🧩 Plugin Integration & Tuning</h3><div class="content"><ul><li>Integrated plugins like BigBlueButton, Attendance, and Custom Certificates</li><li>Tuned server settings for real-time sessions</li><li>Resolved plugin conflicts and updated DB schemas</li></ul></div></div>
-    <div class="card"><h3>🔐 OAuth2 Login Integration</h3><div class="content"><ul><li>Enabled secure login via Google and Microsoft accounts</li><li>Configured OAuth2 services with client secrets and scopes</li><li>Ensured SSO for both students and faculty</li><li>Works across subdomains and internal IP-based servers</li></ul></div></div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section style="text-align: center; padding: 60px 20px;" data-aos="zoom-in">
-    <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      📰 Explore My Moodle Blog
-    </h2>
-    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
-      Step-by-step tutorials, deployment guides, and real fixes from the field
+    <h2>Welcome to Moodle Support</h2>
+    <p>
+      We provide comprehensive support for Moodle hosting, customization, and academic integrations.
+      Explore our services and solutions designed to empower institutions.
     </p>
-    <a href="blog.html" class="cta" style="padding: 15px 40px; font-size: 1.1rem;">Read Articles</a>
+    <a href="#services" class="btn">Explore Services</a>
   </section>
 
-
-  <div class="divider"></div>
-
-<section style="padding:60px 20px; text-align:center;" data-aos="fade-up">
-  <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    ℹ️ About MoodleSupport.in
-  </h2>
-  <p style="color: var(--text-muted); font-size:1.1rem; max-width:800px; margin:20px auto;">
-    MoodleSupport.in is a dedicated help desk for universities, institutes, and educators running Moodle LMS. 
-    We provide deployment, training, plugin integration, OAuth2 setup, backup automation, and troubleshooting — 
-    ensuring your LMS is secure, scalable, and user-friendly.
-  </p>
-</section>
-
-<div class="divider"></div>
-
-<section style="padding:60px 20px; text-align:center;" data-aos="fade-up">
-  <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-    🔗 Useful Moodle Links
-  </h2>
-  <p><a href="https://moodle.org" target="_blank">Moodle.org</a> | 
-     <a href="https://docs.moodle.org" target="_blank">Moodle Docs</a> | 
-     <a href="https://moodle.org/plugins/" target="_blank">Moodle Plugins</a> | 
-     <a href="https://moodle.org/community/" target="_blank">Community Forum</a>
-  </p>
-</section>
-
-<div class="divider"></div>
-  
-  <section style="padding: 60px 20px; text-align: center;" data-aos="fade-up">
-    <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      💬 Testimonials
-    </h2>
-    <div style="max-width: 800px; margin: auto; font-size: 1.05rem; color: #ccc;">
-      <p>“Moodlesupport.in's Team set up our Moodle portal from scratch, configured Google login, and provided training to over 50 faculty — everything worked flawlessly.”</p>
-      <p style="color: var(--secondary); margin-bottom:30px;">– Institute of National Importance</p>
-      <p>“We had Moodle errors during exams. Moodlesupport.in's Team fixed everything within hours and added auto-backup jobs. Highly recommended.”</p>
-      <p style="color: var(--secondary);">– Technical Admin, Online Programs</p>
+  <section id="about">
+    <h3>About Us</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Experience</h4>
+        <p>Over 5+ years of expertise in Moodle administration, customization, and integration.</p>
+      </div>
+      <div class="card">
+        <h4>Clients</h4>
+        <p>Trusted by institutions and organizations for academic solutions worldwide.</p>
+      </div>
+      <div class="card">
+        <h4>Innovation</h4>
+        <p>We bring modern, scalable, and user-friendly solutions tailored to your needs.</p>
+      </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <section id="services">
+    <h3>Our Services</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Hosting</h4>
+        <p>Reliable Moodle hosting with secure cloud infrastructure and backups.</p>
+      </div>
+      <div class="card">
+        <h4>Customization</h4>
+        <p>Theme and plugin customization for an engaging learning experience.</p>
+      </div>
+      <div class="card">
+        <h4>Integrations</h4>
+        <p>Seamless integration with Jotform, Google, and third-party academic tools.</p>
+      </div>
+    </div>
+  </section>
 
-  <section id="contact" style="padding: 60px 20px; text-align: center;" data-aos="fade-up">
-    <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      📩 Contact Me
-    </h2>
-    <p style="color: var(--text-muted); font-size: 1.1rem;">Have a Moodle project or need LMS support? Send me a message.</p>
-    <form action="https://formspree.io/f/mgvyblob" method="POST" style="max-width: 500px; margin: 30px auto;">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
-      <button type="submit" class="cta" style="margin-top: 10px;">Send Message</button>
-    </form>
+  <section id="portfolio">
+    <h3>Portfolio</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>University Solutions</h4>
+        <p>Implemented central grade portals and timetable systems for higher education.</p>
+      </div>
+      <div class="card">
+        <h4>EdTech Platforms</h4>
+        <p>Built scalable Moodle solutions powering thousands of online learners.</p>
+      </div>
+      <div class="card">
+        <h4>Custom Development</h4>
+        <p>Delivered plugins and blocks tailored to institutional requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h3>Blog</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Enhancing Moodle</h4>
+        <p>Tips on creating engaging Moodle experiences with modern UI and animations.</p>
+      </div>
+      <div class="card">
+        <h4>Integrations</h4>
+        <p>How Jotform and Moodle can work together for academic automation.</p>
+      </div>
+      <div class="card">
+        <h4>Hosting Choices</h4>
+        <p>Comparing cloud vs on-premise Moodle hosting for institutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3>Contact Us</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Email</h4>
+        <p><a href="mailto:support@moodlesupport.in">support@moodlesupport.in</a></p>
+      </div>
+      <div class="card">
+        <h4>Website</h4>
+        <p><a href="https://moodlesupport.in" target="_blank">https://moodlesupport.in</a></p>
+      </div>
+      <div class="card">
+        <h4>Location</h4>
+        <p>India</p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <a href="pricing.html" style="color:white; margin-left:20px;">Pricing</a>
-    &copy; 2025 MoodleSupport.in – Created with ❤️
+    <p>&copy; 2025 Moodle Support | Built with ❤️ for academic excellence.</p>
   </footer>
 
-  <div class="scroll-top" id="scrollTopBtn">↑</div>
+  <button id="scrollTop">&#8679;</button>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ once: true, duration: 1000 });
-
-    function animateCounter(id, end, duration) {
-      let el = document.getElementById(id);
-      let start = 0;
-      let step = Math.ceil(end / (duration / 30));
-      let interval = setInterval(() => {
-        start += step;
-        if (start >= end) {
-          el.innerText = end + '+';
-          clearInterval(interval);
-        } else {
-          el.innerText = start;
-        }
-      }, 30);
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-      animateCounter('count1', 5, 1000);
-      animateCounter('count2', 200, 1200);
-      animateCounter('count3', 7000, 1500);
-    });
-
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('active');
-      });
-    });
-
-    const scrollBtn = document.getElementById("scrollTopBtn");
+    // Scroll to top button
+    const scrollBtn = document.getElementById("scrollTop");
     window.addEventListener("scroll", () => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
     });
     scrollBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animated counters (if any)
+    document.querySelectorAll(".counter").forEach(counter => {
+      counter.innerText = "0";
+      const updateCounter = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+        const increment = target / 100;
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(updateCounter, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCounter();
     });
   </script>
-
 </body>
 </html>
-
