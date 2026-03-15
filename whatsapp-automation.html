@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Class Cancellation Automation – Prateek Sharma | MoodleSupport.in</title>
+  <meta name="description" content="How Prateek Sharma built a WhatsApp-triggered class cancellation automation system at IIT Patna — Node.js, Python, Microsoft SMTP, serving 10,000+ students across 60+ courses."/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#0d0d12;--ink2:#1a1a26;--accent:#6c63ff;--accent2:#00e5c0;--accent3:#ff6b6b;--text:#f0f0f8;--muted:#8888a8;--card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--text);line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(108,99,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(108,99,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+    .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:0.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-150px;right:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent2);bottom:10%;left:-150px}
+    nav{position:sticky;top:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,18,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--card-border)}
+    .nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;text-decoration:none;color:var(--text)}
+    .nav-brand span{color:var(--accent2)}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--accent)!important;color:#fff!important;padding:7px 18px;border-radius:6px}
+    .wrap{max-width:820px;margin:0 auto;padding:70px 40px;position:relative;z-index:1}
+    .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:0.88rem;margin-bottom:40px;transition:color 0.2s}
+    .back-link:hover{color:var(--text)}
+    .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:20px}
+    .meta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--card-border)}
+    .meta-tag{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:500;padding:5px 14px;border-radius:100px}
+    .tag-purple{background:rgba(108,99,255,0.12);color:#c4bfff;border:1px solid rgba(108,99,255,0.25)}
+    .tag-teal{background:rgba(0,229,192,0.1);color:var(--accent2);border:1px solid rgba(0,229,192,0.2)}
+    .tag-amber{background:rgba(255,180,0,0.1);color:#ffd060;border:1px solid rgba(255,180,0,0.2)}
+    .tag-coral{background:rgba(255,107,107,0.1);color:#ff9999;border:1px solid rgba(255,107,107,0.2)}
+
+    /* FLOW DIAGRAM */
+    .flow-diagram{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:36px;margin:32px 0;overflow-x:auto}
+    .flow-steps{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:nowrap;min-width:600px}
+    .flow-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+    .flow-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .fi-purple{background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.35)}
+    .fi-teal{background:rgba(0,229,192,0.15);border:1px solid rgba(0,229,192,0.3)}
+    .fi-amber{background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25)}
+    .fi-coral{background:rgba(255,107,107,0.12);border:1px solid rgba(255,107,107,0.25)}
+    .fi-green{background:rgba(0,200,100,0.12);border:1px solid rgba(0,200,100,0.25)}
+    .flow-label{font-size:0.72rem;font-weight:500;color:var(--muted);text-align:center;max-width:80px;line-height:1.3}
+    .flow-arrow{color:rgba(255,255,255,0.2);font-size:1.2rem;flex-shrink:0;padding:0 4px;margin-bottom:24px}
+
+    /* CONTENT */
+    .prose h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin:36px 0 14px;color:var(--text)}
+    .prose p{color:#c0c0d8;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .prose ul{margin:0 0 16px 1.4rem}
+    .prose li{color:#c0c0d8;font-size:0.95rem;line-height:1.8;margin-bottom:5px}
+    .prose strong{color:var(--text);font-weight:500}
+
+    /* CODE BLOCKS */
+    .code-block{background:rgba(255,255,255,0.03);border:1px solid var(--card-border);border-radius:12px;padding:20px 24px;margin:16px 0;overflow-x:auto;position:relative}
+    .code-label{position:absolute;top:10px;right:14px;font-size:0.68rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+    .code-block code{font-family:'Courier New',monospace;font-size:0.85rem;color:#c0e0ff;line-height:1.75;white-space:pre}
+    .code-block .kw{color:#c4bfff}
+    .code-block .str{color:#a8e6a3}
+    .code-block .cm{color:#666888;font-style:italic}
+    .code-block .fn{color:#ffd060}
+
+    /* CALLOUT */
+    .callout{background:rgba(0,229,192,0.07);border:1px solid rgba(0,229,192,0.2);border-radius:10px;padding:16px 20px;margin:20px 0}
+    .callout p{color:var(--accent2);margin:0;font-size:0.9rem}
+    .callout-amber{background:rgba(255,180,0,0.07);border-color:rgba(255,180,0,0.2)}
+    .callout-amber p{color:#ffd060}
+
+    /* IMPACT BOX */
+    .impact-box{background:linear-gradient(135deg,rgba(108,99,255,0.1),rgba(0,229,192,0.07));border:1px solid rgba(108,99,255,0.2);border-radius:14px;padding:28px 32px;margin:32px 0}
+    .impact-title{font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:16px}
+    .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .impact-stat{text-align:center}
+    .impact-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent2);line-height:1;margin-bottom:4px}
+    .impact-desc{font-size:0.8rem;color:var(--muted)}
+
+    /* TECH STACK */
+    .tech-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+    .tech-pill{font-size:0.78rem;padding:4px 12px;border-radius:100px;background:rgba(108,99,255,0.1);color:#a89cff;border:1px solid rgba(108,99,255,0.2)}
+
+    /* TIMELINE */
+    .build-steps{display:flex;flex-direction:column;gap:0;margin:24px 0}
+    .build-step{display:flex;gap:20px;position:relative;padding-bottom:24px}
+    .build-step:last-child{padding-bottom:0}
+    .step-left{display:flex;flex-direction:column;align-items:center;gap:0;flex-shrink:0}
+    .step-num{width:32px;height:32px;border-radius:50%;background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;color:#a89cff;flex-shrink:0}
+    .step-line{width:1px;flex:1;background:linear-gradient(to bottom,rgba(108,99,255,0.3),transparent);margin-top:4px;min-height:20px}
+    .step-content{padding-top:5px;padding-bottom:4px}
+    .step-title{font-size:0.92rem;font-weight:500;color:var(--text);margin-bottom:4px}
+    .step-desc{font-size:0.85rem;color:var(--muted);line-height:1.6}
+
+    /* WHATSAPP MOCKUP */
+    .wa-mockup{background:var(--ink2);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin:24px 0;max-width:380px}
+    .wa-header{background:#1f2937;padding:12px 16px;display:flex;align-items:center;gap:10px}
+    .wa-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;flex-shrink:0}
+    .wa-name{font-size:0.88rem;font-weight:500}
+    .wa-status{font-size:0.72rem;color:#6b7280}
+    .wa-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+    .wa-msg{padding:10px 14px;border-radius:10px;font-size:0.82rem;line-height:1.5;max-width:85%}
+    .wa-sent{background:rgba(108,99,255,0.25);border:1px solid rgba(108,99,255,0.3);align-self:flex-end;color:#d0ccff}
+    .wa-recv{background:rgba(255,255,255,0.06);border:1px solid var(--card-border);align-self:flex-start;color:#c0c0d8}
+    .wa-time{font-size:0.68rem;color:var(--muted);text-align:right;margin-top:4px}
+
+    .divider{height:1px;background:linear-gradient(to right,transparent,var(--card-border),transparent);margin:0 40px;position:relative;z-index:1}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+    footer{text-align:center;padding:32px 40px;border-top:1px solid var(--card-border);color:var(--muted);font-size:0.82rem;position:relative;z-index:1}
+    footer a{color:var(--accent2);text-decoration:none}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.wrap{padding:50px 20px}.flow-steps{min-width:500px}.impact-grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CG45R84VWT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-CG45R84VWT");
+  </script>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <a href="index.html" class="nav-brand">Moodle<span>Support</span>.in</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="blog.html">Blog</a>
+    <a href="hire.html">Hire Me</a>
+    <a href="mailto:ch1106851030@gmail.com" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <a href="case-studies.html" class="back-link fade-up">← Back to Case Studies</a>
+
+  <div class="fade-up">
+    <div class="eyebrow">Automation Project · IIT Patna</div>
+    <h1>WhatsApp-Triggered Class Cancellation Automation</h1>
+    <div class="meta-row">
+      <span class="meta-tag tag-purple">Node.js</span>
+      <span class="meta-tag tag-teal">Python</span>
+      <span class="meta-tag tag-amber">Microsoft SMTP</span>
+      <span class="meta-tag tag-coral">WhatsApp Automation</span>
+      <span class="meta-tag tag-purple">Academic Operations</span>
+    </div>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="flow-diagram fade-up">
+    <div class="flow-steps">
+      <div class="flow-node">
+        <div class="flow-icon fi-purple">💬</div>
+        <div class="flow-label">WhatsApp message sent</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon fi-teal">🤖</div>
+        <div class="flow-label">Node.js bot detects</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon fi-amber">🐍</div>
+        <div class="flow-label">Python script runs</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon fi-coral">📋</div>
+        <div class="flow-label">Excel lookup</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon fi-green">✉️</div>
+        <div class="flow-label">Email auto-sent</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose fade-up">
+
+    <h2>The Problem</h2>
+    <p>At IIT Patna, class cancellations were handled entirely through manual communication. A faculty member would inform the academic office, who would then manually compose and send an email to each affected student group — a process that took <strong>10–15 minutes per cancellation</strong> and required someone to be available at a computer at all times.</p>
+    <p>With <strong>60+ active courses</strong> across BBA, CSDA, and AICS programmes and <strong>10,000+ enrolled students</strong>, even a single missed or delayed cancellation notice caused student confusion, unnecessary travel, and support tickets to the academic office.</p>
+    <p>The manual process also had no audit trail — there was no reliable record of which classes had been cancelled, when the notice was sent, or who was notified.</p>
+
+    <h2>The Solution</h2>
+    <p>I designed and built a complete end-to-end automation system that reduces the entire cancellation workflow to a single WhatsApp message. The system is triggered by me — not faculty directly — which ensures message quality and prevents accidental triggers from unrelated WhatsApp activity.</p>
+
+    <!-- WHATSAPP MOCKUP -->
+    <div class="wa-mockup">
+      <div class="wa-header">
+        <div class="wa-avatar">PS</div>
+        <div>
+          <div class="wa-name">Saved Messages</div>
+          <div class="wa-status">Academic Office Bot</div>
+        </div>
+      </div>
+      <div class="wa-body">
+        <div class="wa-msg wa-sent">
+          CDA 101 | 30 Mar 2026 | Cancelled
+          <div class="wa-time">10:32 AM ✓✓</div>
+        </div>
+        <div class="wa-msg wa-recv">
+          ✅ Email sent successfully<br>
+          Course: Mathematics-I (CDA 101)<br>
+          Date: 30 Mar 2026<br>
+          Notified: s26csda@iitp.ac.in, s26aics@iitp.ac.in
+          <div class="wa-time">10:32 AM</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The message format is simple and consistent: <strong>Course Code | Date | Cancelled</strong>. Within seconds of sending, the system automatically looks up the course in the master database, identifies all associated email aliases, composes a formatted cancellation notice, and sends it — all without any manual intervention.</p>
+
+    <h2>How It Was Built</h2>
+
+    <div class="build-steps">
+      <div class="build-step">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">WhatsApp Bot — Node.js</div>
+          <div class="step-desc">Built using whatsapp-web.js, the bot monitors WhatsApp for messages sent by me only (msg.fromMe filter). Messages from all other contacts and groups are completely ignored. When a message containing the pipe | delimiter is detected, the bot extracts the text and passes it to the Python script as a command-line argument.</div>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Course Database — Excel Lookup</div>
+          <div class="step-desc">A structured courses.xlsx file maps every course code to its name and email aliases. Multiple aliases per course are supported (e.g. CDA 101 notifies both CSDA and AICS student groups simultaneously). The Python script uses pandas to query this file and extract all relevant details in milliseconds.</div>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Email Automation — Microsoft SMTP</div>
+          <div class="step-desc">Emails are sent via Microsoft Office 365 SMTP using the institutional moodle_support@iitp.ac.in account. The system automatically constructs a formatted cancellation notice, addresses it to all course aliases, and CCs cet_off@iitp.ac.in for administrative records — all in a single automated send.</div>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Cancellation Log — Excel Audit Trail</div>
+          <div class="step-desc">Every cancellation is automatically appended to cancellation_log.xlsx with a timestamp, course code, course name, date, and status. This creates a permanent audit trail for academic administration — something the manual process completely lacked.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>The Code</h2>
+    <p>The WhatsApp bot listens for messages sent by the operator and triggers the Python script:</p>
+
+    <div class="code-block">
+      <div class="code-label">bot.js — Node.js</div>
+      <code><span class="cm">// Only trigger on operator's own messages</span>
+client.<span class="fn">on</span>(<span class="str">'message_create'</span>, msg => {
+  <span class="kw">if</span> (msg.fromMe && msg.body.<span class="fn">includes</span>(<span class="str">"|"</span>)) {
+    exec(`python <span class="str">"cancel_class.py"</span> <span class="str">"${msg.body}"</span>`,
+      (error, stdout) => console.<span class="fn">log</span>(stdout));
+  }
+});</code>
+    </div>
+
+    <p>The Python script parses the message, queries the course database, and sends the email:</p>
+
+    <div class="code-block">
+      <div class="code-label">cancel_class.py — Python</div>
+      <code><span class="cm"># Parse WhatsApp message</span>
+course, date, status = [x.<span class="fn">strip</span>() <span class="kw">for</span> x <span class="kw">in</span> message.<span class="fn">split</span>(<span class="str">"|"</span>)]
+
+<span class="cm"># Lookup course in Excel database</span>
+df = pd.<span class="fn">read_excel</span>(<span class="str">"courses.xlsx"</span>)
+row = df[df[<span class="str">"Course Code"</span>] == course]
+
+<span class="cm"># Handle multiple email aliases per course</span>
+alias_list = [x.<span class="fn">strip</span>() <span class="kw">for</span> x <span class="kw">in</span> row[<span class="str">"Alias"</span>].<span class="fn">values</span>[0].<span class="fn">split</span>(<span class="str">","</span>)]
+recipients = alias_list + [<span class="str">"cet_off@iitp.ac.in"</span>]
+
+<span class="cm"># Send via Microsoft SMTP</span>
+server = smtplib.<span class="fn">SMTP</span>(<span class="str">"smtp.office365.com"</span>, 587)
+server.<span class="fn">starttls</span>()
+server.<span class="fn">login</span>(<span class="str">"moodle_support@iitp.ac.in"</span>, PASSWORD)
+server.<span class="fn">sendmail</span>(SENDER, recipients, msg.<span class="fn">as_string</span>())</code>
+    </div>
+
+    <div class="callout">
+      <p>The msg.fromMe filter is the key security design — the bot ignores 100% of incoming WhatsApp messages from faculty, students, groups, and all other contacts. Only messages sent by the operator trigger the automation.</p>
+    </div>
+
+    <h2>Handling Multiple Aliases</h2>
+    <p>Several courses at IIT Patna serve multiple student cohorts simultaneously. For example, CDA 101 (Mathematics-I) is taken by both CSDA and AICS students — requiring notification to two separate email groups from a single cancellation command.</p>
+    <p>The system handles this automatically by parsing comma-separated aliases from the Excel database and sending to all of them in a single email operation:</p>
+
+    <div class="code-block">
+      <div class="code-label">courses.xlsx — Multiple aliases</div>
+      <code>CDA 101 | Mathematics-I | s26csda@iitp.ac.in,s26aics@iitp.ac.in</code>
+    </div>
+
+    <p>A single WhatsApp message notifies both student groups, the CC recipient, and creates one unified log entry — with zero additional effort.</p>
+
+    <h2>Before vs After</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0">
+      <div style="background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);border-radius:12px;padding:20px">
+        <div style="font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#ff9999;margin-bottom:12px">Before — Manual</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.7">Faculty informs office → Admin opens Outlook → Manually finds alias → Writes email → Sends → No log created<br><br><strong style="color:#ff9999">Time: 10–15 minutes</strong></div>
+      </div>
+      <div style="background:rgba(0,229,192,0.06);border:1px solid rgba(0,229,192,0.2);border-radius:12px;padding:20px">
+        <div style="font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:12px">After — Automated</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.7">Send one WhatsApp message → Email auto-sent to all aliases → CC sent → Log entry created automatically<br><br><strong style="color:var(--accent2)">Time: under 10 seconds</strong></div>
+      </div>
+    </div>
+
+    <h2>Tech Stack</h2>
+    <div class="tech-row">
+      <span class="tech-pill">Node.js</span>
+      <span class="tech-pill">whatsapp-web.js</span>
+      <span class="tech-pill">Python 3.14</span>
+      <span class="tech-pill">pandas</span>
+      <span class="tech-pill">smtplib</span>
+      <span class="tech-pill">Microsoft SMTP (Office 365)</span>
+      <span class="tech-pill">openpyxl</span>
+      <span class="tech-pill">Windows Task Scheduler</span>
+    </div>
+
+  </div>
+
+  <!-- IMPACT -->
+  <div class="impact-box fade-up">
+    <div class="impact-title">Impact</div>
+    <div class="impact-grid">
+      <div class="impact-stat">
+        <div class="impact-num">10k+</div>
+        <div class="impact-desc">Students served by the system</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">60+</div>
+        <div class="impact-desc">Courses across BBA, CSDA, AICS</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">~99%</div>
+        <div class="impact-desc">Reduction in manual effort</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">&lt;10s</div>
+        <div class="impact-desc">End-to-end processing time</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose fade-up">
+    <h2>What's Next</h2>
+    <p>The system has a clear upgrade path that will make it even more capable:</p>
+    <ul>
+      <li><strong>Short command format</strong> — sending <code>cancel CDA 101</code> will auto-fill today's date, removing the need for date entry</li>
+      <li><strong>WhatsApp confirmation reply</strong> — the bot will reply with a confirmation showing which aliases were notified</li>
+      <li><strong>Cloud deployment</strong> — moving the bot from a local laptop to an always-on cloud server (Oracle Cloud free tier) for 24/7 availability</li>
+      <li><strong>Moodle integration</strong> — automatically posting a cancellation announcement in the Moodle course alongside the email</li>
+      <li><strong>Timetable portal update</strong> — marking the class as cancelled in the central timetable system</li>
+    </ul>
+
+    <div class="callout callout-amber">
+      <p>This project demonstrates that operational automation doesn't require a dedicated engineering team — it requires identifying the right problem, choosing the right tools, and building something that actually gets used.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; display:flex; gap:14px; flex-wrap:wrap;" class="fade-up">
+    <a href="case-studies.html" style="background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;text-decoration:none;font-weight:500;font-size:0.9rem;display:inline-block;">View All Case Studies</a>
+    <a href="hire.html" style="background:transparent;color:var(--text);padding:12px 26px;border-radius:8px;text-decoration:none;font-weight:500;font-size:0.9rem;border:1px solid var(--card-border);display:inline-block;">Hire Me</a>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+<footer>
+  <p>© <span id="yr"></span> Prateek Sharma · <a href="index.html">MoodleSupport.in</a></p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const observer = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
