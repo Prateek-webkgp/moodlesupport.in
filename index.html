@@ -1,855 +1,1144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prateek Sharma – Senior LMS Platform Manager | MoodleSupport.in</title>
-  <meta name="description" content="Prateek Sharma – IIT Kharagpur M.Tech. Senior LMS Platform Manager and EdTech Program Leader. Moodle architect for IIT Patna serving 5,000+ learners." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0d0d12;
-      --ink2: #1a1a26;
-      --ink3: #24243a;
-      --accent: #6c63ff;
-      --accent2: #00e5c0;
-      --accent3: #ff6b6b;
-      --text: #f0f0f8;
-      --muted: #8888a8;
-      --card-bg: rgba(255,255,255,0.04);
-      --card-border: rgba(255,255,255,0.08);
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prateek Sharma — Senior Program Manager, Strategy & Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --ink: #0F0E0A;
+  --ink2: #1C1B15;
+  --ink3: #2A2920;
+  --gold: #C9A84C;
+  --gold2: #E8C97A;
+  --rust: #B85C38;
+  --sage: #4A6741;
+  --mist: #8A8778;
+  --border: rgba(201,168,76,0.2);
+  --card: rgba(255,255,255,0.03);
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  overflow-x: hidden;
+  cursor: none;
+}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--ink);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.18s ease;
+  opacity: 0.6;
+}
 
-    /* Background grid */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.4;
+}
 
-    /* Glow orbs */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.18;
-    }
-    .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
-    .orb-2 { width: 500px; height: 500px; background: var(--accent2); bottom: 10%; left: -150px; }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(15,14,10,0.88);
+  backdrop-filter: blur(20px);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mist);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  font-size: 0.78rem !important; font-weight: 600 !important;
+  padding: 9px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold) !important;
+  transition: all 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
 
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 18px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(13,13,18,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--card-border);
-    }
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 60px 80px;
+  position: relative; z-index: 2;
+}
+.hero-right {
+  position: relative; overflow: hidden;
+  border-left: 1px solid var(--border);
+}
+.hero-right-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0;
+}
 
-    .nav-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-    }
-    .nav-brand span { color: var(--accent2); }
+/* Big background number */
+.hero-bg-num {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: 28vw;
+  font-weight: 900;
+  color: rgba(201,168,76,0.04);
+  line-height: 1;
+  right: -2vw; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+}
 
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
 
-    .nav-cta {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-size: 0.85rem !important;
-      transition: opacity 0.2s !important;
-    }
-    .nav-cta:hover { opacity: 0.85; }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+h1 .name-line { display: block; }
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
 
-    /* SECTIONS */
-    section { position: relative; z-index: 1; }
+.hero-role {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 700; font-style: italic;
+  color: var(--mist);
+  margin-bottom: 32px;
+  border-left: 2px solid var(--rust);
+  padding-left: 16px;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 40px 80px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.hero-desc {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: rgba(245,240,232,0.65);
+  max-width: 480px;
+  margin-bottom: 48px;
+}
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      width: 100%;
-    }
+.hero-actions { display: flex; gap: 16px; }
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 14px 32px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  border: none; cursor: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-outline {
+  border: 1px solid rgba(245,240,232,0.2);
+  color: var(--cream);
+  padding: 14px 32px;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  cursor: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,229,192,0.1);
-      border: 1px solid rgba(0,229,192,0.25);
-      color: var(--accent2);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      margin-bottom: 24px;
-      letter-spacing: 0.03em;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent2);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
-    }
+/* IIT badge */
+.iit-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gold2);
+  margin-bottom: 40px;
+}
 
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.4rem, 4vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
+/* Animated stat blocks on hero right */
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  width: 100%;
+}
+.stat-cell {
+  background: var(--ink);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.stat-cell:hover { background: rgba(201,168,76,0.06); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mist);
+}
+.stat-sub {
+  font-size: 0.7rem; color: rgba(138,135,120,0.6);
+  margin-top: 4px; font-family: 'JetBrains Mono', monospace;
+}
 
-    .hero h1 .name { color: var(--accent2); display: block; }
-    .hero h1 .role { color: var(--text); }
+/* COUNT-UP ANIMATION */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .hero-sub {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
+/* SECTION BASE */
+section { position: relative; z-index: 1; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
 
-    .hero-iit {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(108,99,255,0.1);
-      border: 1px solid rgba(108,99,255,0.25);
-      color: #a89cff;
-      padding: 5px 14px;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      margin-bottom: 32px;
-    }
+.sec-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.sec-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 80px; }
 
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+h2 em { font-style: italic; color: var(--gold); }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(108,99,255,0.35);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,99,255,0.45); }
+.sec-sub {
+  font-size: 1rem; font-weight: 300;
+  color: rgba(245,240,232,0.55);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 56px;
+}
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      border: 1px solid var(--card-border);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+/* DIVIDER LINE */
+.divider { height: 1px; background: var(--border); margin: 0 60px; }
 
-    /* Hero photo side */
-    .hero-visual {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
+/* ─── WHAT I DO SECTION ─── */
+.pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  margin-top: 8px;
+}
+.pillar {
+  background: var(--ink);
+  padding: 44px 36px;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.pillar:hover { background: rgba(201,168,76,0.05); }
+.pillar::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.pillar:hover::before { transform: scaleX(1); }
+.pillar-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; color: var(--gold);
+  letter-spacing: 0.15em; margin-bottom: 20px;
+}
+.pillar h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.pillar p {
+  font-size: 0.88rem; font-weight: 300;
+  color: rgba(245,240,232,0.55); line-height: 1.75;
+  margin-bottom: 20px;
+}
+.pillar-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; padding: 3px 10px;
+  border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold2); letter-spacing: 0.08em;
+}
 
-    .photo-frame {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      padding: 3px;
-      flex-shrink: 0;
-    }
-    .photo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--ink2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-size: 4rem;
-      font-weight: 800;
-      color: var(--accent2);
-    }
+/* ─── TIMELINE / EXPERIENCE ─── */
+.exp-grid { display: grid; grid-template-columns: 280px 1fr; gap: 0; }
+.exp-nav {
+  border-right: 1px solid var(--border);
+  padding-right: 40px;
+  position: sticky; top: 120px; align-self: start;
+}
+.exp-nav-item {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  cursor: none;
+  transition: all 0.2s;
+}
+.exp-nav-item.active .en-role { color: var(--gold); }
+.exp-nav-item.active .en-org { color: var(--cream); }
+.exp-nav-item:hover .en-role { color: var(--gold2); }
+.en-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; color: var(--mist);
+  letter-spacing: 0.1em; margin-bottom: 4px;
+}
+.en-role {
+  font-size: 0.9rem; font-weight: 600;
+  color: rgba(245,240,232,0.6);
+  margin-bottom: 2px; transition: color 0.2s;
+  line-height: 1.3;
+}
+.en-org { font-size: 0.78rem; color: var(--mist); }
 
-    .social-links { display: flex; gap: 12px; }
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .social-link:hover { border-color: var(--accent); background: rgba(108,99,255,0.1); }
+.exp-content { padding-left: 56px; }
+.exp-panel { display: none; }
+.exp-panel.active { display: block; }
+.exp-panel-header { margin-bottom: 28px; }
+.exp-panel-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 700;
+  line-height: 1.15; margin-bottom: 8px;
+}
+.exp-panel-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; color: var(--gold);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  font-size: 0.9rem; font-weight: 300;
+  line-height: 1.7; color: rgba(245,240,232,0.75);
+}
+.exp-bullets li::before {
+  content: '→';
+  color: var(--gold); flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem; margin-top: 3px;
+}
+.exp-bullets li strong { color: var(--cream); font-weight: 600; }
+.exp-panel-impact {
+  margin-top: 24px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.impact-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; padding: 6px 14px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border);
+  color: var(--gold2); letter-spacing: 0.06em;
+}
 
-    /* METRICS STRIP */
-    .metrics-strip {
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-      padding: 40px 40px;
-      background: rgba(255,255,255,0.02);
-    }
-    .metrics-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      text-align: center;
-    }
-    .metric-item {}
-    .metric-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--accent2);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .metric-label {
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 400;
-    }
+/* ─── CASE STUDIES / AUTOMATIONS ─── */
+.cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+.case-card {
+  background: var(--ink);
+  padding: 36px;
+  position: relative; overflow: hidden;
+  cursor: none;
+  transition: background 0.3s;
+  group: true;
+}
+.case-card:hover { background: rgba(201,168,76,0.04); }
+.case-card::after {
+  content: '↗';
+  position: absolute; top: 28px; right: 28px;
+  font-size: 1.1rem; color: var(--gold);
+  opacity: 0; transition: opacity 0.2s, transform 0.2s;
+  transform: translate(-4px, 4px);
+}
+.case-card:hover::after { opacity: 1; transform: translate(0,0); }
+.case-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; color: var(--gold);
+  letter-spacing: 0.15em; margin-bottom: 16px;
+}
+.case-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 12px; line-height: 1.3;
+}
+.case-card p {
+  font-size: 0.85rem; font-weight: 300;
+  color: rgba(245,240,232,0.5); line-height: 1.7;
+  margin-bottom: 20px;
+}
+.case-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--rust);
+  letter-spacing: 0.06em;
+  padding-top: 14px;
+  border-top: 1px solid rgba(201,168,76,0.12);
+}
+.case-metric span { color: var(--gold2); font-weight: 500; }
 
-    /* GENERIC SECTION WRAPPER */
-    .section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 40px;
-    }
+/* ─── SKILLS ─── */
+.skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.skill-group-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.skill-bar-row { margin-bottom: 16px; }
+.skill-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.82rem; font-weight: 500;
+  margin-bottom: 6px; color: rgba(245,240,232,0.8);
+}
+.skill-bar-label span { color: var(--mist); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; }
+.skill-bar-bg { height: 2px; background: rgba(201,168,76,0.12); }
+.skill-bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2));
+  width: 0; transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+}
 
-    .section-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 12px;
-    }
+/* ─── CREDENTIALS ─── */
+.creds-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.cred-card {
+  border: 1px solid var(--border);
+  padding: 28px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.25s;
+}
+.cred-card:hover { border-color: var(--gold); }
+.cred-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; color: var(--gold);
+  letter-spacing: 0.15em; margin-bottom: 12px;
+}
+.cred-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 6px; line-height: 1.3;
+}
+.cred-card p { font-size: 0.78rem; color: var(--mist); line-height: 1.6; }
 
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
+/* ─── CONTACT ─── */
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+}
+.contact-left {
+  background: var(--ink); padding: 72px 60px;
+}
+.contact-right {
+  background: rgba(201,168,76,0.05);
+  padding: 72px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.contact-left h2 { margin-bottom: 20px; }
+.contact-left p {
+  font-size: 0.95rem; font-weight: 300;
+  color: rgba(245,240,232,0.55); line-height: 1.8;
+  margin-bottom: 36px;
+}
+.contact-detail {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  font-size: 0.88rem; color: rgba(245,240,232,0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-detail:hover { color: var(--gold); }
+.contact-detail-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  color: var(--mist); width: 70px; flex-shrink: 0;
+}
+.open-to-box {
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.open-to-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.open-to-item {
+  font-size: 0.88rem; padding: 8px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  color: rgba(245,240,232,0.75); display: flex; align-items: center; gap: 10px;
+}
+.open-to-item::before { content: '·'; color: var(--gold); font-size: 1.2rem; }
+.open-to-item:last-child { border-bottom: none; }
 
-    .section-sub {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 560px;
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; z-index: 1;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem; color: var(--mist);
+}
+.footer-brand span { color: var(--gold); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mist);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
 
-    /* CARDS GRID */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 28px;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .card:hover {
-      border-color: rgba(108,99,255,0.35);
-      transform: translateY(-4px);
-    }
+/* HORIZONTAL MARQUEE */
+.marquee-wrap {
+  overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 14px 0; background: rgba(201,168,76,0.03);
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex; align-items: center; gap: 28px;
+  padding: 0 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--mist);
+  white-space: nowrap;
+}
+.marquee-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(108,99,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .card-impact {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 4px 12px;
-      background: rgba(0,229,192,0.1);
-      border: 1px solid rgba(0,229,192,0.2);
-      color: var(--accent2);
-      border-radius: 100px;
-      margin-top: 8px;
-    }
-
-    /* TECH STACK */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .tech-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .tech-item:hover { border-color: var(--accent); color: var(--text); }
-    .tech-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent2);
-      flex-shrink: 0;
-    }
-
-    /* TIMELINE */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-    }
-
-    .tl-item {
-      position: relative;
-      margin-bottom: 36px;
-    }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -34px; top: 6px;
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--ink);
-      box-shadow: 0 0 0 3px rgba(108,99,255,0.2);
-    }
-
-    .tl-date {
-      font-size: 0.78rem;
-      color: var(--accent2);
-      font-weight: 500;
-      margin-bottom: 4px;
-      letter-spacing: 0.04em;
-    }
-    .tl-role {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-    .tl-org {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-    .tl-desc {
-      color: #c0c0d8;
-      font-size: 0.88rem;
-      line-height: 1.7;
-    }
-
-    /* TESTIMONIALS */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .testimonial-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 28px;
-    }
-
-    .testimonial-text {
-      font-size: 0.92rem;
-      color: #c8c8e0;
-      line-height: 1.75;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .t-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .t-name { font-weight: 500; font-size: 0.88rem; }
-    .t-title { font-size: 0.78rem; color: var(--muted); }
-
-    /* CONTACT */
-    .contact-box {
-      background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(0,229,192,0.08));
-      border: 1px solid rgba(108,99,255,0.2);
-      border-radius: 20px;
-      padding: 60px 48px;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .contact-box h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .contact-box p {
-      color: var(--muted);
-      margin-bottom: 32px;
-      font-size: 1rem;
-    }
-    .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 36px 40px;
-      border-top: 1px solid var(--card-border);
-      color: var(--muted);
-      font-size: 0.85rem;
-      position: relative;
-      z-index: 1;
-    }
-    footer a { color: var(--accent2); text-decoration: none; }
-
-    /* DIVIDER */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--card-border), transparent);
-      margin: 0 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Fade-in animations */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 80px 20px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { order: -1; }
-      .metrics-inner { grid-template-columns: repeat(2, 1fr); padding: 0; }
-      .section-wrap { padding: 60px 20px; }
-      .contact-box { padding: 40px 24px; }
-      footer { padding: 28px 20px; }
-      .divider { margin: 0 20px; }
-    }
-  </style>
-  <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CG45R84VWT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-CG45R84VWT");
-  </script>
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 24px 48px; }
+  .hero-right { border-left: none; border-top: 1px solid var(--border); }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .wrap { padding: 72px 24px; }
+  .divider { margin: 0 24px; }
+  .pillars { grid-template-columns: 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-nav { display: none; }
+  .exp-content { padding-left: 0; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .skills-layout { grid-template-columns: 1fr; }
+  .creds-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 48px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 16px; }
+}
+</style>
 </head>
 <body>
 
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-brand">Moodle<span>Support</span>.in</div>
-    <div class="nav-links">
-      <a href="case-studies.html">Case Studies</a>
-      <a href="architecture.html">Architecture</a>
-      <a href="blog.html">Blog</a>
-      <a href="hire.html">Hire Me</a>
-      <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" class="nav-cta">LinkedIn</a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PS<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section>
-    <div class="hero">
-      <div class="hero-inner">
-        <div class="hero-text fade-up">
-          <div class="hero-badge">LMS Implementation & EdTech </div>
-          <h1>
-            <span class="name">Prateek Sharma</span>
-            <span class="role">Senior LMS Platform Manager</span>
-          </h1>
-          <p class="hero-sub">I architect, operate and scale Moodle-based learning platforms for universities — combining deep technical ownership with academic program leadership.</p>
-          <div class="hero-iit">
-            🎓 M.Tech · Indian Institute of Technology, Kharagpur
-          </div>
-          <div class="hero-actions">
-            <a href="case-studies.html" class="btn-primary">View Platform Work</a>
-            <a href="hire.html" class="btn-secondary">Hire Me</a>
-          </div>
-        </div>
-        <div class="hero-visual fade-up" style="transition-delay:0.15s">
-          <div class="photo-frame">
-            <div class="photo-inner">PS</div>
-          </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" class="social-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
-            <a href="mailto:ch1106851030@gmail.com" class="social-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-              Email
-            </a>
-          </div>
-        </div>
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-bg-num">PS</div>
+      <div class="eyebrow reveal">Senior Program Manager</div>
+      <h1 class="reveal reveal-delay-1">
+        <span class="name-line">Prateek</span>
+        <em>Sharma</em>
+      </h1>
+      <div class="hero-role reveal reveal-delay-2">Strategy & Operations · Program Delivery · Digital Transformation</div>
+      <div class="iit-badge reveal reveal-delay-3">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#C9A84C" stroke-width="1"/><circle cx="6" cy="6" r="2" fill="#C9A84C"/></svg>
+        M.Tech · IIT Kharagpur · GATE AIR 364
+      </div>
+      <p class="hero-desc reveal reveal-delay-3">I build operational systems that make large, complex programs run — reliably, at scale, and with measurable outcomes. Government institutions. Enterprise platforms. 10,000+ beneficiaries.</p>
+      <div class="hero-actions reveal reveal-delay-4">
+        <a href="#work" class="btn-gold">View Case Studies</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
     </div>
-  </section>
-
-  <!-- METRICS -->
-  <div class="metrics-strip fade-up">
-    <div class="metrics-inner">
-      <div class="metric-item">
-        <div class="metric-num">5,000+</div>
-        <div class="metric-label">Learners Supported</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">200+</div>
-        <div class="metric-label">Faculty Enabled</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">30%</div>
-        <div class="metric-label">Ops Time Saved</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">99%+</div>
-        <div class="metric-label">Platform Uptime</div>
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-num" data-target="10000" data-suffix="+">0</div>
+          <div class="stat-label">Program Beneficiaries</div>
+          <div class="stat-sub">IIT Patna · active</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-target="99" data-suffix="%+">0</div>
+          <div class="stat-label">Platform Uptime</div>
+          <div class="stat-sub">across all semesters</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-target="40" data-suffix="%">0</div>
+          <div class="stat-label">Efficiency Gained</div>
+          <div class="stat-sub">via SOP & automation</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" data-target="6" data-suffix="+ yrs">0</div>
+          <div class="stat-label">Program Delivery</div>
+          <div class="stat-sub">Gov · Enterprise · EdTech</div>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="divider"></div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy & Operations</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Program Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Process Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Government Program Delivery</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>MIS & Governance Reporting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Change Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SOP Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Stakeholder Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Digital Transformation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Operational Excellence</div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy & Operations</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Program Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Process Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Government Program Delivery</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>MIS & Governance Reporting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Change Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SOP Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Stakeholder Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Digital Transformation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Operational Excellence</div>
+  </div>
+</div>
 
-  <!-- CASE STUDIES -->
-  <section id="work">
-    <div class="section-wrap">
-      <div class="fade-up">
-        <div class="section-eyebrow">Platform Work</div>
-        <h2 class="section-title">Selected Case Studies</h2>
-        <p class="section-sub">Production-grade systems built and operated for IIT Patna and EdTech institutions at scale. <a href="case-studies.html" style="color:var(--accent2);text-decoration:none;">View all 5 case studies →</a></p>
+<!-- WHAT I DO -->
+<section id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">What I Do</div>
+      <h2>Three things I do <em>exceptionally</em> well</h2>
+      <p class="sec-sub">Across government institutions, NSDC-aligned organisations, and large digital platforms — the work always comes back to these three capabilities.</p>
+    </div>
+    <div class="pillars reveal reveal-delay-1">
+      <div class="pillar">
+        <div class="pillar-num">01 / 03</div>
+        <h3>Program Design & Governance</h3>
+        <p>I design institutional frameworks that make complex, multi-stakeholder programs governable. SOPs, compliance structures, MIS systems, audit trails — built to survive leadership changes and scale across departments.</p>
+        <div class="pillar-tags">
+          <span class="tag">SOP Design</span>
+          <span class="tag">MIS Reporting</span>
+          <span class="tag">Compliance</span>
+          <span class="tag">Governance</span>
+        </div>
       </div>
-      <div class="cards-grid fade-up" style="transition-delay:0.1s">
-
-        <div class="card">
-          <div class="card-icon">📊</div>
-          <h3>Grade Lookup & Reporting Tool</h3>
-          <p>Faculty at IIT Patna were spending hours per week manually pulling grades across multiple courses with no central view. I built a PHP-based grade lookup system with role-based access, enabling faculty and admins to view multi-course grades from a single interface.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> PHP, MySQL, Moodle APIs, role-based access control</p>
-          <span class="card-impact">Eliminated manual reporting dependency</span>
+      <div class="pillar">
+        <div class="pillar-num">02 / 03</div>
+        <h3>Operational Systems & Automation</h3>
+        <p>I identify manual processes that shouldn't exist and replace them with automated systems. A 15-minute institutional workflow reduced to 10 seconds. A 20-minute manual task eliminated entirely. Automation that actually gets used.</p>
+        <div class="pillar-tags">
+          <span class="tag">Process Automation</span>
+          <span class="tag">Workflow Design</span>
+          <span class="tag">Systems Thinking</span>
         </div>
-
-        <div class="card">
-          <div class="card-icon">📄</div>
-          <h3>Transcript Viewer (Custom Moodle Block)</h3>
-          <p>Academic teams needed fast, filtered access to student transcripts across cohorts and batches — a feature not available in standard Moodle. I designed and deployed a custom Moodle block with cohort and batch filters, accessible to authorised roles only.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> Moodle block API, PHP, cohort management</p>
-          <span class="card-impact">Streamlined academic & admin workflows</span>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Infrastructure Automation & Reliability</h3>
-          <p>Inherited a manual backup process prone to failures and storage bloat. Re-architected the entire backup and restore pipeline using shell scripts and cron jobs on Ubuntu LAMP servers, with DB tuning and uptime monitoring.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> Ubuntu, Apache, MariaDB, Shell scripting, Cron</p>
-          <span class="card-impact">30% reduction in backup & restore time</span>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🎥</div>
-          <h3>BigBlueButton Live Session Integration</h3>
-          <p>Integrated BigBlueButton for live class delivery across UG, PG and PhD programmes at IIT Patna — including server-side configuration, Moodle plugin setup, session scheduling, and faculty training for 200+ educators.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> BigBlueButton, Moodle BBB plugin, server config</p>
-          <span class="card-impact">Live sessions for 5,000+ learners</span>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🔐</div>
-          <h3>OAuth2 / SSO Integration</h3>
-          <p>Configured OAuth2-based Single Sign-On with Google and Microsoft for seamless faculty and student authentication — reducing login friction and support tickets across the institution.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> OAuth2, Moodle auth plugins, Google Workspace</p>
-          <span class="card-impact">Reduced login-related support load</span>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">👥</div>
-          <h3>Large-Scale User Onboarding</h3>
-          <p>Designed and executed the onboarding process for 5,000+ students and 200+ faculty across multiple programmes — using Moodle CLI tools for bulk uploads, cohort assignment, and role configuration at scale.</p>
-          <p><strong style="color:var(--text)">Tech:</strong> Moodle CLI, CSV uploads, cohort management</p>
-          <span class="card-impact">Zero-disruption semester launches</span>
-        </div>
-
       </div>
-      <div style="text-align:center; margin-top: 32px;" class="fade-up">
-        <a href="case-studies.html" class="btn-primary" style="margin-right:12px;">View All Case Studies</a>
-        <a href="architecture.html" class="btn-secondary">Platform Architecture</a>
+      <div class="pillar">
+        <div class="pillar-num">03 / 03</div>
+        <h3>Stakeholder & Delivery Leadership</h3>
+        <p>I own the full program arc — from scoping through delivery — across multi-tier stakeholder structures. Government officers, institutional leadership, internal teams. SLA management, escalation handling, change communication at scale.</p>
+        <div class="pillar-tags">
+          <span class="tag">P&L Ownership</span>
+          <span class="tag">Stakeholder Mgmt</span>
+          <span class="tag">Change Management</span>
+        </div>
       </div>
     </div>
-  </section>
-  <section id="stack">
-    <div class="section-wrap">
-      <div class="fade-up">
-        <div class="section-eyebrow">Technical Skills</div>
-        <h2 class="section-title">Platform Stack</h2>
-        <p class="section-sub">Full-stack LMS ownership — from server infrastructure to plugin customisation and academic operations.</p>
-      </div>
-      <div class="tech-grid fade-up" style="transition-delay:0.1s">
-        <div class="tech-item"><span class="tech-dot"></span>Moodle LMS 4.0–4.5</div>
-        <div class="tech-item"><span class="tech-dot"></span>Ubuntu / LAMP Stack</div>
-        <div class="tech-item"><span class="tech-dot"></span>MySQL / MariaDB</div>
-        <div class="tech-item"><span class="tech-dot"></span>PHP Development</div>
-        <div class="tech-item"><span class="tech-dot"></span>Shell Scripting</div>
-        <div class="tech-item"><span class="tech-dot"></span>Cron Job Automation</div>
-        <div class="tech-item"><span class="tech-dot"></span>BigBlueButton</div>
-        <div class="tech-item"><span class="tech-dot"></span>OAuth2 / SSO</div>
-        <div class="tech-item"><span class="tech-dot"></span>SCORM / LTI</div>
-        <div class="tech-item"><span class="tech-dot"></span>Git Version Control</div>
-        <div class="tech-item"><span class="tech-dot"></span>Plugin Customisation</div>
-        <div class="tech-item"><span class="tech-dot"></span>Performance Tuning</div>
-      </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">Experience</div>
+      <h2>Where I've <em>delivered</em></h2>
+      <p class="sec-sub">6+ years. Three organisations. Programs ranging from 1,000 to 100,000+ beneficiaries.</p>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- EXPERIENCE TIMELINE -->
-  <section id="experience">
-    <div class="section-wrap">
-      <div class="fade-up">
-        <div class="section-eyebrow">Career</div>
-        <h2 class="section-title">Experience</h2>
-        <p class="section-sub">5+ years building and leading digital learning platforms across EdTech and higher education.</p>
-      </div>
-      <div class="timeline fade-up" style="transition-delay:0.1s">
-
-        <div class="tl-item">
-          <div class="tl-date">Nov 2023 – Present</div>
-          <div class="tl-role">Senior LMS Platform Manager (Moodle)</div>
-          <div class="tl-org">Resource Partner · IIT Patna</div>
-          <div class="tl-desc">Architected and administered Moodle LMS (v4.0–4.5) for 5,000+ students and 200+ faculty across UG, PG, PhD, and IITPSAT programmes. Full ownership of infrastructure, automation, custom development, and platform reliability.</div>
+    <div class="exp-grid reveal reveal-delay-1">
+      <div class="exp-nav">
+        <div class="exp-nav-item active" data-panel="p1" onclick="switchExp('p1')">
+          <div class="en-date">Nov 2023 – Present</div>
+          <div class="en-role">Senior Program Manager – Strategy & Operations</div>
+          <div class="en-org">IIT Patna (Resource Partner)</div>
         </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Feb 2023 – Nov 2023</div>
-          <div class="tl-role">Senior Program Manager – Learning Platforms & Operations</div>
-          <div class="tl-org">TeamLease EdTech</div>
-          <div class="tl-desc">Led end-to-end online programme delivery for a major partner university — impacting 1,000+ students. Owned P&L, academic planning, and stakeholder management. Improved operational efficiency by 25% through process redesign.</div>
+        <div class="exp-nav-item" data-panel="p2" onclick="switchExp('p2')">
+          <div class="en-date">Feb 2023 – Nov 2023</div>
+          <div class="en-role">Senior Project Manager – Strategy & Operations</div>
+          <div class="en-org">TeamLease EdTech</div>
         </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Jun 2019 – Feb 2023</div>
-          <div class="tl-role">Lead Instructional Designer & Content Platform Lead</div>
-          <div class="tl-org">BYJU'S (Think & Learn Pvt. Ltd.)</div>
-          <div class="tl-desc">Led a team of 7–10 designers building adaptive learning content for BYJU'S Android and iOS apps. Designed gamified learning modules impacting 100,000+ users. Reduced content iteration cycles by 30% through SOPs.</div>
+        <div class="exp-nav-item" data-panel="p3" onclick="switchExp('p3')">
+          <div class="en-date">Jun 2019 – Feb 2023</div>
+          <div class="en-role">Lead · Senior Associate · Associate</div>
+          <div class="en-org">BYJU'S (Think & Learn)</div>
         </div>
-
       </div>
-    </div>
-  </section>
+      <div class="exp-content">
 
-  <div class="divider"></div>
-
-  <!-- TESTIMONIALS -->
-  <section>
-    <div class="section-wrap">
-      <div class="fade-up">
-        <div class="section-eyebrow">Recommendations</div>
-        <h2 class="section-title">What Colleagues Say</h2>
-        <p class="section-sub">From peers and stakeholders across BYJU'S and EdTech leadership roles.</p>
-      </div>
-      <div class="testimonials-grid fade-up" style="transition-delay:0.1s">
-
-        <div class="testimonial-card">
-          <p class="testimonial-text">"It has been an absolute pleasure to work alongside someone as dedicated, knowledgeable, and skilled. Your leadership skills are truly remarkable, and your ability to communicate clearly and effectively has been invaluable to our team's success."</p>
-          <div class="testimonial-author">
-            <div class="t-avatar">LS</div>
-            <div>
-              <div class="t-name">Lavjeet Singh</div>
-              <div class="t-title">Senior Graphic Designer · BYJU'S</div>
-            </div>
+        <div class="exp-panel active" id="p1">
+          <div class="exp-panel-header">
+            <div class="exp-panel-role">Senior Program Manager<br>Strategy & Operations</div>
+            <div class="exp-panel-meta">IIT Patna (Central Govt. Institution) · Nov 2023 – Present · 2 yrs 7 mos</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Led <strong>digital transformation</strong> of a Central Government IIT's program delivery infrastructure — 10,000+ participants, 4 server environments, 200+ operational units, Ministry of Education mandate.</li>
+            <li>Designed and deployed <strong>15+ institutional SOPs</strong> aligned with government compliance standards — improving workflow efficiency by 40% and ensuring full audit readiness.</li>
+            <li>Built a <strong>process automation system</strong> reducing a critical institutional communication workflow from 15 minutes to under 10 seconds — serving 60+ operational units with automated audit logging.</li>
+            <li>Delivered <strong>zero-disruption onboarding</strong> for 10,000+ participants each semester using automated validation — 100% Day-1 access across every programme launch.</li>
+            <li>Deployed custom <strong>centralised reporting tool</strong> eliminating 2–3 hours of manual reporting per faculty per week across 300+ staff; transcript generation reduced 20 min → 60 seconds.</li>
+            <li>Configured <strong>SSO across 10,000+ institutional users</strong> (Google + Microsoft) — eliminating an entire category of recurring support overhead.</li>
+            <li>Achieved <strong>85% adoption rate</strong> on new operational systems through structured capability-building workshops; reduced support load by 50% within one semester.</li>
+          </ul>
+          <div class="exp-panel-impact">
+            <span class="impact-chip">10,000+ beneficiaries</span>
+            <span class="impact-chip">40% efficiency ↑</span>
+            <span class="impact-chip">99%+ uptime</span>
+            <span class="impact-chip">15 min → 10 sec</span>
+            <span class="impact-chip">100% Day-1 access</span>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Prateek always stood out as one of the most enthusiastic and quality-driven members of the team. A great team player who doesn't fall short of taking an initiative and ensuring it's implemented across teams."</p>
-          <div class="testimonial-author">
-            <div class="t-avatar">NB</div>
-            <div>
-              <div class="t-name">Nishitha Bajaj</div>
-              <div class="t-title">Solutions Consultant · CX Leader</div>
-            </div>
+        <div class="exp-panel" id="p2">
+          <div class="exp-panel-header">
+            <div class="exp-panel-role">Senior Project Manager<br>Strategy & Operations</div>
+            <div class="exp-panel-meta">TeamLease EdTech (NSDC Partner) · Feb 2023 – Nov 2023 · 10 months</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Owned <strong>end-to-end program delivery</strong> for a large institutional client — P&L accountability, operational planning, cross-functional execution across 1,000+ beneficiaries, 2 active batches.</li>
+            <li>Drove <strong>25% operational efficiency improvement</strong> through redesign of 12+ reporting workflows — reducing report generation from 4 hours to under 1 hour.</li>
+            <li>Managed <strong>3-tier stakeholder structure</strong> (client leadership, government program officers, internal teams) — near-zero SLA breaches through proactive governance and escalation frameworks.</li>
+            <li>Designed and launched <strong>5 new operational SOPs</strong> aligned with NSDC quality standards — improving delivery consistency and reducing program escalations.</li>
+            <li>Maintained <strong>full government compliance</strong> — audit documentation, MIS records, and scheme reporting requirements met across all delivery periods.</li>
+          </ul>
+          <div class="exp-panel-impact">
+            <span class="impact-chip">P&L ownership</span>
+            <span class="impact-chip">25% efficiency ↑</span>
+            <span class="impact-chip">4 hrs → 1 hr</span>
+            <span class="impact-chip">Near-zero SLA breaches</span>
+          </div>
+        </div>
+
+        <div class="exp-panel" id="p3">
+          <div class="exp-panel-header">
+            <div class="exp-panel-role">Lead / Senior Associate / Associate<br>Platform Operations & Delivery</div>
+            <div class="exp-panel-meta">BYJU'S (Think & Learn Pvt. Ltd.) · Jun 2019 – Feb 2023 · 3 yrs 9 mos</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Led a <strong>cross-functional team of 7–10</strong> across program planning, quality assurance, and delivery operations — workload allocation, output timelines, team performance across 15+ concurrent projects.</li>
+            <li>Drove <strong>large-scale program delivery</strong> impacting 100,000+ end users across Android and iOS — owned end-to-end from scoping through deployment.</li>
+            <li>Designed and enforced <strong>standardised review and sign-off SOPs</strong> — reducing iteration cycles by 30% and cutting average delivery time from 3 weeks to 10 days.</li>
+            <li>Built a <strong>Google Sheets–based project dashboard</strong> tracking daily progress, resource utilisation, and delivery status across all workstreams in real time.</li>
+            <li>Led <strong>talent acquisition</strong> — authored JDs, designed structured assessments, conducted interviews, scaled the team from the ground up.</li>
+          </ul>
+          <div class="exp-panel-impact">
+            <span class="impact-chip">100,000+ end users</span>
+            <span class="impact-chip">30% cycle time ↓</span>
+            <span class="impact-chip">7–10 team</span>
+            <span class="impact-chip">15+ concurrent projects</span>
           </div>
         </div>
 
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="divider"></div>
+<div class="divider"></div>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-wrap">
-      <div class="contact-box fade-up">
-        <h2>Let's Connect</h2>
-        <p>LMS implementation, EdTech program leadership, and Project Management.</p>
-        <div class="contact-actions">
-          <a href="hire.html" class="btn-secondary">View Hire Me Page</a>
-          <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" class="btn-secondary">LinkedIn</a>
+<!-- CASE STUDIES / OPERATIONAL WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">Operational Work</div>
+      <h2>Systems I <em>built</em> from scratch</h2>
+      <p class="sec-sub">Real problems. Production solutions. Every system below is live and serving 10,000+ institutional users at IIT Patna.</p>
+    </div>
+    <div class="cases-grid reveal reveal-delay-1">
+      <div class="case-card">
+        <div class="case-num">01 / AUTOMATION</div>
+        <h3>Process Automation — Class Communication System</h3>
+        <p>Institutional communication ran on a 10–15 minute manual process: find the course, look up email groups, open Outlook, compose, send. No audit trail. No reliability. I rebuilt it as a single-trigger automation — one message, instant execution, automatic logging.</p>
+        <div class="case-metric">Before: <span>15 minutes manual</span> · After: <span>under 10 seconds</span> · Serving: <span>10,000+ users, 60+ units</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">02 / REPORTING TOOL</div>
+        <h3>Centralised Grade Reporting & Faculty Self-Service</h3>
+        <p>Faculty spent 2–3 hours per week manually pulling grade data across multiple programs with no central view. Built a role-based reporting tool with multi-program visibility, cohort filters, and direct data access — accessible from a single interface.</p>
+        <div class="case-metric">Impact: <span>300+ faculty</span> · Time saved: <span>2–3 hrs/week per person</span> · Support tickets: <span>near zero</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">03 / RECORDS MANAGEMENT</div>
+        <h3>Academic Records Management — Transcript System</h3>
+        <p>End-of-semester transcript generation required navigating dozens of screens per student — 15–20 minutes per record. Deployed a custom records system with cohort, batch, and programme filters, output formatted to institutional standards, exportable directly.</p>
+        <div class="case-metric">Before: <span>20 minutes/record</span> · After: <span>under 60 seconds</span> · Zero manual exports</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">04 / INFRASTRUCTURE</div>
+        <h3>Backup & Recovery Pipeline Rebuild</h3>
+        <p>Inherited a manual backup process — triggered by hand each semester, no verification, storage bloat accumulating with no cleanup. A failed restore before exams locked out faculty and students. Rebuilt as fully automated pipeline: scheduled, verified, alerted, self-managing.</p>
+        <div class="case-metric">Backup time: <span>30% reduction</span> · Restore failures: <span>zero since rebuild</span> · Storage: <span>fully automated</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">05 / ONBOARDING</div>
+        <h3>Zero-Disruption Semester Onboarding — 10,000+ Users</h3>
+        <p>Every semester: thousands of new participants needing accounts, enrolments, cohort assignments, and role configurations — under tight pre-semester deadlines. Designed a repeatable, automated onboarding process with pre-validation, dry-run staging, and bulk provisioning. Result: 100% Day-1 access, every semester.</p>
+        <div class="case-metric">Scale: <span>10,000+ per semester</span> · Day-1 access: <span>100%</span> · Failures: <span>zero</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">06 / IDENTITY & ACCESS</div>
+        <h3>Enterprise SSO — Google & Microsoft Integration</h3>
+        <p>10,000+ institutional users authenticating through separate systems — password resets, login failures, and support overhead consuming significant admin capacity. Configured OAuth2-based Single Sign-On across both Google Workspace and Microsoft, eliminating an entire category of support tickets.</p>
+        <div class="case-metric">Users: <span>10,000+</span> · Auth tickets: <span>eliminated</span> · Providers: <span>Google + Microsoft</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">Skills & Capabilities</div>
+      <h2>The <em>toolkit</em></h2>
+    </div>
+    <div class="skills-layout reveal reveal-delay-1">
+      <div>
+        <div class="skill-group-title">Program & Strategy</div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Program Management <span>Expert</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">SOP & Process Design <span>Expert</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Stakeholder Management <span>Expert</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">MIS & Governance Reporting <span>Advanced</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Change Management <span>Advanced</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">P&L Ownership <span>Advanced</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Operations & Tools</div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Process Automation <span>Advanced</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Government Compliance <span>Advanced</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Agile / Scrum (CSM) <span>Certified</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Power BI & Data Reporting <span>Intermediate</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Six Sigma (Foundations) <span>Foundation</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="65"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-bar-label">Systems Automation (Node / Python) <span>Intermediate</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="68"></div></div>
         </div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <p>© <span id="year"></span> Prateek Sharma · <a href="https://moodlesupport.in">MoodleSupport.in</a> · <a href="blog.html">Blog</a> · <a href="case-studies.html">Case Studies</a> · <a href="hire.html">Hire Me</a></p>
-  </footer>
+    <!-- Credentials -->
+    <div style="margin-top:56px" class="reveal">
+      <div class="sec-eyebrow">Credentials</div>
+    </div>
+    <div class="creds-grid reveal reveal-delay-1">
+      <div class="cred-card">
+        <div class="cred-icon">DEGREE · 01</div>
+        <h4>M.Tech, Chemical Engineering</h4>
+        <p>Indian Institute of Technology, Kharagpur · GATE AIR 364 · 2017–2019</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">DEGREE · 02</div>
+        <h4>B.Tech, Chemical Engineering</h4>
+        <p>Dr. APJ Abdul Kalam Technical University · First Division · 2011–2015</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">CERTIFICATION · 01</div>
+        <h4>Certified ScrumMaster® (CSM)</h4>
+        <p>Scrum Alliance · 2023 · Active certification in Agile program delivery</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">CERTIFICATION · 02</div>
+        <h4>Six Sigma Foundations</h4>
+        <p>LinkedIn Learning · Process excellence and operational efficiency methodology</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">CERTIFICATION · 03</div>
+        <h4>Project Management Foundations</h4>
+        <p>LinkedIn / PMI · Structured project delivery frameworks and methodologies</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">CERTIFICATION · 04</div>
+        <h4>Power BI Data Analytics</h4>
+        <p>LinkedIn Learning · PL-300 prep · Dashboard design and MIS reporting</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<div class="divider"></div>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) {
-          el.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div class="sec-eyebrow">Contact</div>
+      <h2>Let's <em>talk</em></h2>
+      <p>I'm open to Senior Program Manager, Strategy & Operations, Business Transformation, and Chief of Staff opportunities across industries. Government program delivery background. IIT Kharagpur M.Tech. Based in Gurugram.</p>
+      <a href="mailto:ch1106851030@gmail.com" class="contact-detail">
+        <span class="contact-detail-label">Email</span>
+        ch1106851030@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" class="contact-detail">
+        <span class="contact-detail-label">LinkedIn</span>
+        linkedin.com/in/prateek-sharma-10220121
+      </a>
+      <a href="https://moodlesupport.in" target="_blank" rel="noopener" class="contact-detail">
+        <span class="contact-detail-label">Portfolio</span>
+        moodlesupport.in
+      </a>
+      <div class="contact-detail" style="cursor:default">
+        <span class="contact-detail-label">Location</span>
+        Gurugram, Haryana · Open to relocation
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="open-to-box">
+        <div class="open-to-title">Open to</div>
+        <div class="open-to-item">Program Manager – Strategy & Operations</div>
+        <div class="open-to-item">Program Manager – Strategy & Consulting</div>
+        <div class="open-to-item">Business Transformation Manager</div>
+        <div class="open-to-item">Engagement / Delivery Manager</div>
+        <div class="open-to-item">Chief of Staff</div>
+      </div>
+      <a href="mailto:ch1106851030@gmail.com" class="btn-gold" style="display:inline-block">Send a Message</a>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Prateek <span>Sharma</span> · Gurugram, India</div>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank">LinkedIn</a>
+    <a href="mailto:ch1106851030@gmail.com">Email</a>
+    <a href="https://moodlesupport.in" target="_blank">Case Studies</a>
+  </div>
+</footer>
 
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx - 4 + 'px';
+  cursor.style.top = my - 4 + 'px';
+});
+function animateRing() {
+  rx += (mx - rx - 18) * 0.12;
+  ry += (my - ry - 18) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, .pillar, .case-card, .cred-card, .exp-nav-item').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform = 'scale(1.8)'; ring.style.borderColor = '#E8C97A'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform = 'scale(1)'; ring.style.borderColor = '#C9A84C'; });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Count-up animation
+const countEls = document.querySelectorAll('[data-target]');
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    let start = 0;
+    const duration = 1600;
+    const startTime = performance.now();
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const val = Math.round(eased * target);
+      el.textContent = (target >= 1000 ? val.toLocaleString() : val) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+    countObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+countEls.forEach(el => countObserver.observe(el));
+
+// Experience panel switcher
+function switchExp(id) {
+  document.querySelectorAll('.exp-nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[data-panel="${id}"]`).classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// Skill bars
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width + '%';
+    });
+    barObserver.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-layout').forEach(el => barObserver.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id], section');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+  });
+}, { passive: true });
+</script>
 </body>
 </html>
