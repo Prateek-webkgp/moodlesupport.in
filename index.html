@@ -113,13 +113,14 @@ nav {
   position: relative; z-index: 2;
 }
 .hero-right {
-  position: relative; overflow: hidden;
+  position: relative;
   border-left: 1px solid var(--border);
+  display: flex; flex-direction: column;
 }
 .hero-right-inner {
-  position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 0;
+  flex: 1;
 }
 
 /* Big background number */
@@ -217,14 +218,21 @@ h1 em {
 
 /* Animated stat blocks on hero right */
 .stat-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1px;
   background: var(--border);
   width: 100%;
+  height: 100%;
+  min-height: 100vh;
 }
 .stat-cell {
   background: var(--ink);
-  padding: 36px 32px;
+  padding: 0 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
@@ -232,19 +240,20 @@ h1 em {
 .stat-cell:hover { background: rgba(201,168,76,0.06); }
 .stat-num {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem; font-weight: 900;
+  font-size: clamp(2.6rem, 3.5vw, 4rem);
+  font-weight: 900;
   color: var(--gold);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .stat-label {
-  font-size: 0.75rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--mist);
 }
 .stat-sub {
-  font-size: 0.7rem; color: rgba(138,135,120,0.6);
-  margin-top: 4px; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; color: rgba(138,135,120,0.55);
+  margin-top: 5px; font-family: 'JetBrains Mono', monospace;
 }
 
 /* COUNT-UP ANIMATION */
@@ -599,8 +608,9 @@ footer {
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 120px 24px 48px; }
-  .hero-right { border-left: none; border-top: 1px solid var(--border); }
-  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .hero-right { border-left: none; border-top: 1px solid var(--border); min-height: auto; }
+  .stat-grid { grid-template-columns: 1fr 1fr; min-height: auto; }
+  .stat-cell { padding: 32px 24px; min-height: 140px; justify-content: flex-start; padding-top: 28px; }
   .wrap { padding: 72px 24px; }
   .divider { margin: 0 24px; }
   .pillars { grid-template-columns: 1fr; }
@@ -674,9 +684,8 @@ footer {
         <div class="stat-cell">
           <div class="stat-num" data-target="6" data-suffix="+ yrs">0</div>
           <div class="stat-label">Program Delivery</div>
-          <div class="stat-sub">Gov · Enterprise · EdTech</div>
+          <div class="stat-sub">Gov · Enterprise · Digital</div>
         </div>
-      </div>
     </div>
   </div>
 </section>
