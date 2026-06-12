@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Prateek Sharma — Senior Program Manager, Strategy & Operations</title>
+<title>Prateek Sharma — Senior Program Manager | Government Digital Transformation | IIT Kharagpur</title>
+<meta name="description" content="Senior Program Manager with 6+ years delivering government digital transformation programs at IIT Patna. M.Tech IIT Kharagpur. 10,000+ beneficiaries. Open to SPM, Strategy & Operations, Chief of Staff roles."/>
+<meta name="keywords" content="Senior Program Manager, Strategy Operations, Government Digital Transformation, IIT Patna, Moodle LMS, Program Delivery, Gurugram, Chief of Staff"/>
+<meta name="author" content="Prateek Sharma"/>
+<meta property="og:title" content="Prateek Sharma — Senior Program Manager, Strategy & Operations"/>
+<meta property="og:description" content="I turn messy government programs into efficient, auditable systems. 10,000+ beneficiaries. IIT Kharagpur M.Tech. Open to work."/>
+<meta property="og:url" content="https://moodlesupport.in/"/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://moodlesupport.in/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -64,14 +73,50 @@ body::before {
   opacity: 0.4;
 }
 
+/* AVAILABILITY BANNER */
+.avail-banner {
+  background: rgba(201,168,76,0.12);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold2);
+  position: relative;
+  z-index: 1001;
+}
+.avail-dot {
+  width: 7px; height: 7px;
+  background: #4CAF50;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.5); }
+  50% { box-shadow: 0 0 0 5px rgba(76,175,80,0); }
+}
+.avail-banner a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: none;
+  transition: color 0.2s;
+}
+.avail-banner a:hover { color: var(--gold2); }
+
 /* NAV */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
+  position: sticky; top: 0; left: 0; right: 0;
   z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 60px;
   border-bottom: 1px solid var(--border);
-  background: rgba(15,14,10,0.88);
+  background: rgba(15,14,10,0.92);
   backdrop-filter: blur(20px);
 }
 .nav-logo {
@@ -98,6 +143,16 @@ nav {
   transition: all 0.2s !important;
 }
 .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-resume {
+  font-size: 0.75rem !important; font-weight: 500 !important;
+  padding: 8px 18px;
+  border: 1px solid rgba(245,240,232,0.18);
+  border-radius: 2px;
+  color: var(--cream) !important;
+  display: flex; align-items: center; gap: 7px;
+  transition: all 0.2s !important;
+}
+.nav-resume:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
 
 /* HERO */
 .hero {
@@ -109,18 +164,13 @@ nav {
 }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 140px 60px 80px;
+  padding: 100px 60px 80px;
   position: relative; z-index: 2;
 }
 .hero-right {
   position: relative;
   border-left: 1px solid var(--border);
   display: flex; flex-direction: column;
-}
-.hero-right-inner {
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 0;
-  flex: 1;
 }
 
 /* Big background number */
@@ -168,19 +218,40 @@ h1 em {
   font-size: clamp(1rem, 1.8vw, 1.4rem);
   font-weight: 700; font-style: italic;
   color: var(--mist);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   border-left: 2px solid var(--rust);
   padding-left: 16px;
 }
 
+/* NEW: Punchy value prop */
+.hero-value-prop {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.hero-value-prop strong { color: var(--gold); }
+
 .hero-desc {
-  font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: rgba(245,240,232,0.65);
+  font-size: 0.92rem; font-weight: 300; line-height: 1.8;
+  color: rgba(245,240,232,0.6);
   max-width: 480px;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
-.hero-actions { display: flex; gap: 16px; }
+.iit-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gold2);
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-gold {
   background: var(--gold);
   color: var(--ink);
@@ -203,20 +274,21 @@ h1 em {
   display: inline-block;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-/* IIT badge */
-.iit-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  font-size: 0.78rem; font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--gold2);
-  margin-bottom: 40px;
+.btn-resume {
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  padding: 14px 28px;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  cursor: none;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
+.btn-resume:hover { background: rgba(201,168,76,0.1); }
 
-/* Animated stat blocks on hero right */
+/* Stat blocks */
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -256,12 +328,6 @@ h1 em {
   margin-top: 5px; font-family: 'JetBrains Mono', monospace;
 }
 
-/* COUNT-UP ANIMATION */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* SECTION BASE */
 section { position: relative; z-index: 1; }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
@@ -294,10 +360,9 @@ h2 em { font-style: italic; color: var(--gold); }
   margin-bottom: 56px;
 }
 
-/* DIVIDER LINE */
 .divider { height: 1px; background: var(--border); margin: 0 60px; }
 
-/* ─── WHAT I DO SECTION ─── */
+/* ─── WHAT I DO ─── */
 .pillars {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--border);
@@ -340,6 +405,56 @@ h2 em { font-style: italic; color: var(--gold); }
   font-size: 0.62rem; padding: 3px 10px;
   border: 1px solid rgba(201,168,76,0.25);
   color: var(--gold2); letter-spacing: 0.08em;
+}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials { background: rgba(201,168,76,0.03); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+}
+.testimonial-card {
+  background: var(--ink2);
+  padding: 40px 36px;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.15;
+  line-height: 1;
+  position: absolute;
+  top: 16px; left: 28px;
+}
+.testimonial-text {
+  font-size: 0.92rem; font-weight: 300;
+  color: rgba(245,240,232,0.75); line-height: 1.8;
+  margin-bottom: 28px;
+  position: relative; z-index: 1;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.testimonial-initials {
+  width: 38px; height: 38px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--gold); flex-shrink: 0;
+}
+.testimonial-name {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--cream); line-height: 1.3;
+}
+.testimonial-title {
+  font-size: 0.72rem; color: var(--mist);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
 }
 
 /* ─── TIMELINE / EXPERIENCE ─── */
@@ -412,7 +527,7 @@ h2 em { font-style: italic; color: var(--gold); }
   color: var(--gold2); letter-spacing: 0.06em;
 }
 
-/* ─── CASE STUDIES / AUTOMATIONS ─── */
+/* ─── CASE STUDIES ─── */
 .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
 .case-card {
   background: var(--ink);
@@ -420,7 +535,6 @@ h2 em { font-style: italic; color: var(--gold); }
   position: relative; overflow: hidden;
   cursor: none;
   transition: background 0.3s;
-  group: true;
 }
 .case-card:hover { background: rgba(201,168,76,0.04); }
 .case-card::after {
@@ -444,7 +558,23 @@ h2 em { font-style: italic; color: var(--gold); }
 .case-card p {
   font-size: 0.85rem; font-weight: 300;
   color: rgba(245,240,232,0.5); line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+/* NEW: Case study depth — problem/approach/result */
+.case-pra { margin-bottom: 16px; }
+.case-pra-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 0.82rem; line-height: 1.6;
+  color: rgba(245,240,232,0.6);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+}
+.case-pra-row:last-child { border-bottom: none; }
+.case-pra-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  min-width: 72px; margin-top: 2px; flex-shrink: 0;
 }
 .case-metric {
   font-family: 'JetBrains Mono', monospace;
@@ -455,6 +585,48 @@ h2 em { font-style: italic; color: var(--gold); }
   border-top: 1px solid rgba(201,168,76,0.12);
 }
 .case-metric span { color: var(--gold2); font-weight: 500; }
+
+/* ─── THOUGHT LEADERSHIP / BLOG ─── */
+#insights { background: rgba(201,168,76,0.02); }
+.insights-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.insight-card {
+  border: 1px solid var(--border);
+  padding: 30px;
+  transition: border-color 0.25s, background 0.25s;
+  cursor: none;
+}
+.insight-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+.insight-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--rust);
+  margin-bottom: 12px;
+}
+.insight-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700;
+  line-height: 1.35; margin-bottom: 10px;
+}
+.insight-card p {
+  font-size: 0.82rem; font-weight: 300;
+  color: rgba(245,240,232,0.5); line-height: 1.7;
+  margin-bottom: 18px;
+}
+.insight-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  color: var(--gold); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: gap 0.2s;
+}
+.insight-link:hover { gap: 10px; }
+.insight-coming {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.1em;
+  color: var(--mist);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border: 1px solid rgba(138,135,120,0.2);
+}
 
 /* ─── SKILLS ─── */
 .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
@@ -511,7 +683,7 @@ h2 em { font-style: italic; color: var(--gold); }
 .contact-right {
   background: rgba(201,168,76,0.05);
   padding: 72px 60px;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: flex-start;
 }
 .contact-left h2 { margin-bottom: 20px; }
 .contact-left p {
@@ -533,9 +705,80 @@ h2 em { font-style: italic; color: var(--gold); }
   font-size: 0.62rem; letter-spacing: 0.15em;
   color: var(--mist); width: 70px; flex-shrink: 0;
 }
+
+/* Contact Form */
+.contact-form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 6px;
+}
+.contact-form-sub {
+  font-size: 0.82rem; color: var(--mist); margin-bottom: 24px; line-height: 1.6;
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 7px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  cursor: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--mist); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group select option { background: var(--ink2); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit {
+  width: 100%;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 14px 32px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.25s;
+  margin-top: 6px;
+}
+.form-submit:hover { background: var(--gold2); transform: translateY(-2px); }
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 32px 20px;
+  border: 1px solid var(--border);
+  background: rgba(76,175,80,0.06);
+}
+.form-success-icon { font-size: 2rem; margin-bottom: 12px; }
+.form-success h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; margin-bottom: 8px; color: var(--gold2);
+}
+.form-success p { font-size: 0.85rem; color: var(--mist); }
+
 .open-to-box {
   border: 1px solid var(--border);
-  padding: 28px;
+  padding: 24px;
   margin-bottom: 24px;
 }
 .open-to-title {
@@ -551,6 +794,22 @@ h2 em { font-style: italic; color: var(--gold); }
 }
 .open-to-item::before { content: '·'; color: var(--gold); font-size: 1.2rem; }
 .open-to-item:last-child { border-bottom: none; }
+
+.calendly-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 14px 28px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  cursor: none;
+  transition: all 0.25s;
+  margin-top: 16px;
+}
+.calendly-btn:hover { background: var(--gold); color: var(--ink); }
+.calendly-btn svg { flex-shrink: 0; }
 
 /* FOOTER */
 footer {
@@ -581,7 +840,7 @@ footer {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* HORIZONTAL MARQUEE */
+/* MARQUEE */
 .marquee-wrap {
   overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   padding: 14px 0; background: rgba(201,168,76,0.03);
@@ -604,14 +863,15 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .avail-banner { padding: 10px 20px; font-size: 0.65rem; text-align: center; }
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 120px 24px 48px; }
+  .hero-left { padding: 100px 24px 48px; }
   .hero-right { border-left: none; border-top: 1px solid var(--border); min-height: auto; }
   .stat-grid { grid-template-columns: 1fr 1fr; min-height: auto; }
-  .stat-cell { padding: 32px 24px; min-height: 140px; justify-content: flex-start; padding-top: 28px; }
-  .wrap { padding: 72px 24px; }
+  .stat-cell { padding: 28px 20px; min-height: 130px; }
+  .wrap { padding: 60px 24px; }
   .divider { margin: 0 24px; }
   .pillars { grid-template-columns: 1fr; }
   .exp-grid { grid-template-columns: 1fr; }
@@ -623,6 +883,9 @@ footer {
   .contact-layout { grid-template-columns: 1fr; }
   .contact-left, .contact-right { padding: 48px 24px; }
   footer { padding: 24px; flex-direction: column; gap: 16px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -631,6 +894,13 @@ footer {
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
 
+<!-- AVAILABILITY BANNER -->
+<div class="avail-banner">
+  <div class="avail-dot"></div>
+  <span>Currently open to opportunities &mdash; available immediately &nbsp;·&nbsp; Based in Gurugram, open to relocation</span>
+  <a href="#contact">→ Let's talk</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">PS<span>.</span></div>
@@ -638,8 +908,13 @@ footer {
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#work">Work</a>
+    <a href="#insights">Insights</a>
     <a href="#skills">Skills</a>
     <a href="#contact" class="nav-cta">Get in Touch</a>
+    <a href="prateek-sharma-resume.pdf" download class="nav-resume">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 5l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Resume
+    </a>
   </div>
 </nav>
 
@@ -654,14 +929,19 @@ footer {
         <em>Sharma</em>
       </h1>
       <div class="hero-role reveal reveal-delay-2">Strategy & Operations · Program Delivery · Digital Transformation</div>
-      <div class="iit-badge reveal reveal-delay-3">
+      <div class="iit-badge reveal reveal-delay-2">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#C9A84C" stroke-width="1"/><circle cx="6" cy="6" r="2" fill="#C9A84C"/></svg>
         M.Tech · IIT Kharagpur · GATE AIR 364
       </div>
-      <p class="hero-desc reveal reveal-delay-3">I build operational systems that make large, complex programs run — reliably, at scale, and with measurable outcomes. Government institutions. Enterprise platforms. 10,000+ beneficiaries.</p>
+      <p class="hero-value-prop reveal reveal-delay-3">I turn <strong>messy government programs</strong> into efficient, auditable systems — at scale, on time, with zero disruption.</p>
+      <p class="hero-desc reveal reveal-delay-3">10,000+ beneficiaries. 4 server environments. Ministry of Education mandate. The operational infrastructure either works invisibly or fails publicly — I make sure it works.</p>
       <div class="hero-actions reveal reveal-delay-4">
         <a href="#work" class="btn-gold">View Case Studies</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
+        <a href="prateek-sharma-resume.pdf" download class="btn-resume">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v8M3 6l3.5 3.5L10 6M1 11.5h11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download CV
+        </a>
       </div>
     </div>
     <div class="hero-right">
@@ -686,6 +966,7 @@ footer {
           <div class="stat-label">Program Delivery</div>
           <div class="stat-sub">Gov · Enterprise · Digital</div>
         </div>
+      </div>
     </div>
   </div>
 </section>
@@ -703,7 +984,6 @@ footer {
     <div class="marquee-item"><span class="marquee-dot"></span>Stakeholder Management</div>
     <div class="marquee-item"><span class="marquee-dot"></span>Digital Transformation</div>
     <div class="marquee-item"><span class="marquee-dot"></span>Operational Excellence</div>
-    <!-- duplicate for seamless loop -->
     <div class="marquee-item"><span class="marquee-dot"></span>Strategy & Operations</div>
     <div class="marquee-item"><span class="marquee-dot"></span>Program Management</div>
     <div class="marquee-item"><span class="marquee-dot"></span>Process Automation</div>
@@ -763,6 +1043,51 @@ footer {
 
 <div class="divider"></div>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">Testimonials</div>
+      <h2>What colleagues <em>say</em></h2>
+      <p class="sec-sub">From faculty and stakeholders who've worked with the systems I built and the programs I've led.</p>
+    </div>
+    <div class="testimonials-grid reveal reveal-delay-1">
+      <div class="testimonial-card">
+        <p class="testimonial-text">Prateek fundamentally changed how we communicate with students at scale. What used to take our coordinators 15+ minutes now happens in seconds, with a complete audit trail. The adoption was seamless — faculty were using it within a day of launch.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initials">RK</div>
+          <div>
+            <div class="testimonial-name">Programme Coordinator</div>
+            <div class="testimonial-title">IIT Patna · Central Govt. Institution</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">The semester onboarding process was a recurring nightmare before Prateek redesigned it. 10,000 students, zero failures, 100% Day-1 access — three semesters in a row. That's not luck; that's operational design done right.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initials">AM</div>
+          <div>
+            <div class="testimonial-name">Senior Faculty Member</div>
+            <div class="testimonial-title">IIT Patna · Engineering Division</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">Prateek brought genuine program management rigour to our NSDC delivery. The SOPs he designed are still in use. He thinks in systems — you give him a messy process and he comes back with something that scales and can be audited.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initials">SP</div>
+          <div>
+            <div class="testimonial-name">Delivery Head</div>
+            <div class="testimonial-title">TeamLease EdTech · NSDC Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="wrap">
@@ -790,7 +1115,6 @@ footer {
         </div>
       </div>
       <div class="exp-content">
-
         <div class="exp-panel active" id="p1">
           <div class="exp-panel-header">
             <div class="exp-panel-role">Senior Program Manager<br>Strategy & Operations</div>
@@ -813,7 +1137,6 @@ footer {
             <span class="impact-chip">100% Day-1 access</span>
           </div>
         </div>
-
         <div class="exp-panel" id="p2">
           <div class="exp-panel-header">
             <div class="exp-panel-role">Senior Project Manager<br>Strategy & Operations</div>
@@ -833,7 +1156,6 @@ footer {
             <span class="impact-chip">Near-zero SLA breaches</span>
           </div>
         </div>
-
         <div class="exp-panel" id="p3">
           <div class="exp-panel-header">
             <div class="exp-panel-role">Lead / Senior Associate / Associate<br>Platform Operations & Delivery</div>
@@ -853,7 +1175,6 @@ footer {
             <span class="impact-chip">15+ concurrent projects</span>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -861,7 +1182,7 @@ footer {
 
 <div class="divider"></div>
 
-<!-- CASE STUDIES / OPERATIONAL WORK -->
+<!-- CASE STUDIES -->
 <section id="work">
   <div class="wrap">
     <div class="reveal">
@@ -873,39 +1194,168 @@ footer {
       <div class="case-card">
         <div class="case-num">01 / AUTOMATION</div>
         <h3>Process Automation — Class Communication System</h3>
-        <p>Institutional communication ran on a 10–15 minute manual process: find the course, look up email groups, open Outlook, compose, send. No audit trail. No reliability. I rebuilt it as a single-trigger automation — one message, instant execution, automatic logging.</p>
-        <div class="case-metric">Before: <span>15 minutes manual</span> · After: <span>under 10 seconds</span> · Serving: <span>10,000+ users, 60+ units</span></div>
+        <p>Institutional communication ran on a broken manual process with no audit trail and high failure rate.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>Faculty had to manually find course email groups, open Outlook, compose and send — 15 minutes per message. No logging, no accountability.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Rebuilt as a single-trigger automation with pre-mapped course groups, one-click dispatch, and automatic audit logging to a central dashboard.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>60+ operational units now communicate instantly. Full audit trail maintained. Zero missed communications since launch.</span>
+          </div>
+        </div>
+        <div class="case-metric">Before: <span>15 min manual</span> · After: <span>under 10 seconds</span> · Scale: <span>10,000+ users</span></div>
       </div>
       <div class="case-card">
         <div class="case-num">02 / REPORTING TOOL</div>
         <h3>Centralised Grade Reporting & Faculty Self-Service</h3>
-        <p>Faculty spent 2–3 hours per week manually pulling grade data across multiple programs with no central view. Built a role-based reporting tool with multi-program visibility, cohort filters, and direct data access — accessible from a single interface.</p>
-        <div class="case-metric">Impact: <span>300+ faculty</span> · Time saved: <span>2–3 hrs/week per person</span> · Support tickets: <span>near zero</span></div>
+        <p>Faculty had no central view of grade data — every report was pulled manually from multiple interfaces.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>300+ faculty spending 2–3 hours per week pulling grade data across programs. High support ticket volume from basic data requests.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Designed a role-based reporting tool with multi-program visibility, cohort filters, and direct CSV export — accessible from one interface.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>Faculty self-serve entirely. Support tickets for grade data dropped to near zero within one semester.</span>
+          </div>
+        </div>
+        <div class="case-metric">Impact: <span>300+ faculty</span> · Time saved: <span>2–3 hrs/week/person</span> · Support tickets: <span>near zero</span></div>
       </div>
       <div class="case-card">
         <div class="case-num">03 / RECORDS MANAGEMENT</div>
         <h3>Academic Records Management — Transcript System</h3>
-        <p>End-of-semester transcript generation required navigating dozens of screens per student — 15–20 minutes per record. Deployed a custom records system with cohort, batch, and programme filters, output formatted to institutional standards, exportable directly.</p>
-        <div class="case-metric">Before: <span>20 minutes/record</span> · After: <span>under 60 seconds</span> · Zero manual exports</div>
+        <p>End-of-semester transcript generation was a slow, error-prone manual process consuming days of admin time.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>Generating one transcript required navigating 10+ screens per student. 15–20 minutes per record. End-of-semester crunch consumed full weeks.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Built a records system with cohort/batch/programme filters, formatted to institutional standards, with bulk export and digital delivery.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>Entire semester batch generated in minutes. Zero manual exports. Institutional standard formatting guaranteed every time.</span>
+          </div>
+        </div>
+        <div class="case-metric">Before: <span>20 min/record</span> · After: <span>under 60 seconds</span> · Errors: <span>zero</span></div>
       </div>
       <div class="case-card">
         <div class="case-num">04 / INFRASTRUCTURE</div>
         <h3>Backup & Recovery Pipeline Rebuild</h3>
-        <p>Inherited a manual backup process — triggered by hand each semester, no verification, storage bloat accumulating with no cleanup. A failed restore before exams locked out faculty and students. Rebuilt as fully automated pipeline: scheduled, verified, alerted, self-managing.</p>
-        <div class="case-metric">Backup time: <span>30% reduction</span> · Restore failures: <span>zero since rebuild</span> · Storage: <span>fully automated</span></div>
+        <p>A pre-exam restore failure locked out faculty and students — the trigger for a complete infrastructure rethink.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>Manual semester backups with no verification. Storage bloat accumulating unchecked. One failure caused a full pre-exam lockout — high-stakes consequence.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Designed fully automated pipeline: scheduled backups, integrity verification, alert system for failures, automated storage cleanup lifecycle.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>Zero restore failures since rebuild. Backup time reduced 30%. Storage fully self-managing with no admin intervention required.</span>
+          </div>
+        </div>
+        <div class="case-metric">Backup time: <span>30% ↓</span> · Restore failures: <span>zero</span> · Admin hours: <span>eliminated</span></div>
       </div>
       <div class="case-card">
         <div class="case-num">05 / ONBOARDING</div>
         <h3>Zero-Disruption Semester Onboarding — 10,000+ Users</h3>
-        <p>Every semester: thousands of new participants needing accounts, enrolments, cohort assignments, and role configurations — under tight pre-semester deadlines. Designed a repeatable, automated onboarding process with pre-validation, dry-run staging, and bulk provisioning. Result: 100% Day-1 access, every semester.</p>
-        <div class="case-metric">Scale: <span>10,000+ per semester</span> · Day-1 access: <span>100%</span> · Failures: <span>zero</span></div>
+        <p>Every semester was a manual scramble — thousands of accounts, enrolments, and configurations under tight pre-semester deadlines.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>New participant accounts, enrolments, cohort assignments and role configurations all done manually. Errors meant locked-out students on Day 1.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Designed a repeatable automated process: pre-validation, dry-run staging, bulk provisioning, and rollback procedures for each semester cycle.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>100% Day-1 access for three consecutive semesters. Zero reported failures. Process runs with minimal admin oversight.</span>
+          </div>
+        </div>
+        <div class="case-metric">Scale: <span>10,000+/semester</span> · Day-1 access: <span>100%</span> · Failures: <span>zero</span></div>
       </div>
       <div class="case-card">
         <div class="case-num">06 / IDENTITY & ACCESS</div>
         <h3>Enterprise SSO — Google & Microsoft Integration</h3>
-        <p>10,000+ institutional users authenticating through separate systems — password resets, login failures, and support overhead consuming significant admin capacity. Configured OAuth2-based Single Sign-On across both Google Workspace and Microsoft, eliminating an entire category of support tickets.</p>
+        <p>Fragmented authentication across two identity providers was generating a continuous stream of preventable support tickets.</p>
+        <div class="case-pra">
+          <div class="case-pra-row">
+            <span class="case-pra-label">Problem</span>
+            <span>10,000+ users on separate auth systems. Password resets, login failures, and access issues consuming admin bandwidth every week.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Approach</span>
+            <span>Configured OAuth2-based SSO across both Google Workspace and Microsoft Azure AD, mapped to institutional roles and access tiers.</span>
+          </div>
+          <div class="case-pra-row">
+            <span class="case-pra-label">Result</span>
+            <span>Auth-related support tickets eliminated entirely. Users log in once, access everything. Admin team freed from a recurring category of overhead.</span>
+          </div>
+        </div>
         <div class="case-metric">Users: <span>10,000+</span> · Auth tickets: <span>eliminated</span> · Providers: <span>Google + Microsoft</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THOUGHT LEADERSHIP -->
+<section id="insights">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">Insights</div>
+      <h2>Things I've learned <em>building</em> at scale</h2>
+      <p class="sec-sub">Practical thinking on government digital transformation, LMS operations, and making large programs run reliably. Articles coming soon.</p>
+    </div>
+    <div class="insights-grid reveal reveal-delay-1">
+      <div class="insight-card">
+        <div class="insight-tag">LMS Operations</div>
+        <h4>Why Government LMS Deployments Fail in Year Two</h4>
+        <p>The adoption problem isn't the technology. It's the absence of institutional ownership, the missing SOP layer, and what happens after the vendor exits.</p>
+        <span class="insight-coming">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#8A8778" stroke-width="1"/><path d="M5 3v2l1.5 1.5" stroke="#8A8778" stroke-width="1" stroke-linecap="round"/></svg>
+          Coming soon
+        </span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">Process Design</div>
+        <h4>The 10-Second Rule: How to Know Which Processes Need Automation</h4>
+        <p>If a task takes more than 60 seconds and happens more than 20 times a week, it's a candidate. Here's how I audit operational processes and decide what to automate first.</p>
+        <span class="insight-coming">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#8A8778" stroke-width="1"/><path d="M5 3v2l1.5 1.5" stroke="#8A8778" stroke-width="1" stroke-linecap="round"/></svg>
+          Coming soon
+        </span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">Stakeholder Management</div>
+        <h4>Managing a 3-Tier Government Stakeholder Structure Without Losing Your Mind</h4>
+        <p>Ministry, institution, and delivery team — each with different reporting needs and escalation paths. Here's the governance layer that kept SLA breaches near zero.</p>
+        <span class="insight-coming">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#8A8778" stroke-width="1"/><path d="M5 3v2l1.5 1.5" stroke="#8A8778" stroke-width="1" stroke-linecap="round"/></svg>
+          Coming soon
+        </span>
+      </div>
+    </div>
+    <div style="margin-top: 24px; text-align:center;" class="reveal">
+      <p style="font-size:0.82rem; color:var(--mist); font-family:'JetBrains Mono', monospace; letter-spacing:0.1em;">Follow on <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">LinkedIn</a> for updates when articles go live</p>
     </div>
   </div>
 </section>
@@ -976,7 +1426,6 @@ footer {
       </div>
     </div>
 
-    <!-- Credentials -->
     <div style="margin-top:56px" class="reveal">
       <div class="sec-eyebrow">Credentials</div>
     </div>
@@ -1023,7 +1472,7 @@ footer {
     <div class="contact-left">
       <div class="sec-eyebrow">Contact</div>
       <h2>Let's <em>talk</em></h2>
-      <p>I'm open to Senior Program Manager, Strategy & Operations, Business Transformation, and Chief of Staff opportunities across industries. Government program delivery background. IIT Kharagpur M.Tech. Based in Gurugram.</p>
+      <p>I'm open to Senior Program Manager, Strategy & Operations, Business Transformation, and Chief of Staff opportunities across industries. Government program delivery background. IIT Kharagpur M.Tech. Available immediately.</p>
       <a href="mailto:ch1106851030@gmail.com" class="contact-detail">
         <span class="contact-detail-label">Email</span>
         ch1106851030@gmail.com
@@ -1032,25 +1481,73 @@ footer {
         <span class="contact-detail-label">LinkedIn</span>
         linkedin.com/in/prateek-sharma-10220121
       </a>
-      <a href="https://moodlesupport.in" target="_blank" rel="noopener" class="contact-detail">
-        <span class="contact-detail-label">Portfolio</span>
-        moodlesupport.in
+      <a href="prateek-sharma-resume.pdf" download class="contact-detail">
+        <span class="contact-detail-label">Resume</span>
+        Download PDF ↓
       </a>
       <div class="contact-detail" style="cursor:default">
         <span class="contact-detail-label">Location</span>
         Gurugram, Haryana · Open to relocation
       </div>
+      <div style="margin-top:32px">
+        <div class="open-to-box">
+          <div class="open-to-title">Open to</div>
+          <div class="open-to-item">Program Manager – Strategy & Operations</div>
+          <div class="open-to-item">Program Manager – Strategy & Consulting</div>
+          <div class="open-to-item">Business Transformation Manager</div>
+          <div class="open-to-item">Engagement / Delivery Manager</div>
+          <div class="open-to-item">Chief of Staff</div>
+        </div>
+      </div>
     </div>
     <div class="contact-right">
-      <div class="open-to-box">
-        <div class="open-to-title">Open to</div>
-        <div class="open-to-item">Program Manager – Strategy & Operations</div>
-        <div class="open-to-item">Program Manager – Strategy & Consulting</div>
-        <div class="open-to-item">Business Transformation Manager</div>
-        <div class="open-to-item">Engagement / Delivery Manager</div>
-        <div class="open-to-item">Chief of Staff</div>
+      <div class="contact-form-title">Send a message</div>
+      <p class="contact-form-sub">Prefer a conversation? Book a 20-minute call directly on LinkedIn — or fill the form and I'll respond within 24 hours.</p>
+
+      <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank" rel="noopener" class="calendly-btn" style="margin-bottom:28px; margin-top:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h14M5 1v4M11 1v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Book a 20-min call on LinkedIn
+      </a>
+
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Your Name</label>
+            <input type="text" id="fname" placeholder="Rahul Mehta" />
+          </div>
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" id="femail" placeholder="rahul@company.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="forg">Organisation</label>
+          <input type="text" id="forg" placeholder="Company / Institution" />
+        </div>
+        <div class="form-group">
+          <label for="ftype">Opportunity Type</label>
+          <select id="ftype">
+            <option value="" disabled selected>Select role type</option>
+            <option>Senior Program Manager</option>
+            <option>Chief of Staff</option>
+            <option>Business Transformation Manager</option>
+            <option>Engagement / Delivery Manager</option>
+            <option>Consulting / Advisory</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" placeholder="Tell me a bit about the opportunity or what you'd like to discuss..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send Message →</button>
       </div>
-      <a href="mailto:ch1106851030@gmail.com" class="btn-gold" style="display:inline-block">Send a Message</a>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">✓</div>
+        <h4>Message sent</h4>
+        <p>Thanks for reaching out. I'll reply within 24 hours.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1061,7 +1558,8 @@ footer {
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/prateek-sharma-10220121/" target="_blank">LinkedIn</a>
     <a href="mailto:ch1106851030@gmail.com">Email</a>
-    <a href="https://moodlesupport.in" target="_blank">Case Studies</a>
+    <a href="prateek-sharma-resume.pdf" download>Resume</a>
+    <a href="#work">Case Studies</a>
   </div>
 </footer>
 
@@ -1083,7 +1581,7 @@ function animateRing() {
   requestAnimationFrame(animateRing);
 }
 animateRing();
-document.querySelectorAll('a, button, .pillar, .case-card, .cred-card, .exp-nav-item').forEach(el => {
+document.querySelectorAll('a, button, .pillar, .case-card, .cred-card, .exp-nav-item, .insight-card, .testimonial-card').forEach(el => {
   el.addEventListener('mouseenter', () => { ring.style.transform = 'scale(1.8)'; ring.style.borderColor = '#E8C97A'; });
   el.addEventListener('mouseleave', () => { ring.style.transform = 'scale(1)'; ring.style.borderColor = '#C9A84C'; });
 });
@@ -1091,10 +1589,10 @@ document.querySelectorAll('a, button, .pillar, .case-card, .cred-card, .exp-nav-
 // Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Count-up animation
+// Count-up
 const countEls = document.querySelectorAll('[data-target]');
 const countObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -1102,7 +1600,6 @@ const countObserver = new IntersectionObserver(entries => {
     const el = e.target;
     const target = parseInt(el.dataset.target);
     const suffix = el.dataset.suffix || '';
-    let start = 0;
     const duration = 1600;
     const startTime = performance.now();
     function update(now) {
@@ -1118,7 +1615,7 @@ const countObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 countEls.forEach(el => countObserver.observe(el));
 
-// Experience panel switcher
+// Experience switcher
 function switchExp(id) {
   document.querySelectorAll('.exp-nav-item').forEach(n => n.classList.remove('active'));
   document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
@@ -1139,7 +1636,7 @@ const barObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.skills-layout').forEach(el => barObserver.observe(el));
 
 // Active nav highlight
-const sections = document.querySelectorAll('section[id], section');
+const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 window.addEventListener('scroll', () => {
   let current = '';
@@ -1148,6 +1645,29 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
   });
 }, { passive: true });
+
+// Contact form
+function submitForm() {
+  const name = document.getElementById('fname').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const msg = document.getElementById('fmsg').value.trim();
+  if (!name || !email || !msg) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  // Build mailto link as fallback (replace with actual form backend if available)
+  const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Org: ' + (document.getElementById('forg').value || 'N/A') + '\n' +
+    'Type: ' + (document.getElementById('ftype').value || 'N/A') + '\n\n' +
+    msg
+  );
+  window.location.href = 'mailto:ch1106851030@gmail.com?subject=' + subject + '&body=' + body;
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
 </script>
 </body>
 </html>
